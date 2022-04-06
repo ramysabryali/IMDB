@@ -1,7 +1,7 @@
 
-# Photos App
+# IMDP Movies App
 
-A simple UIKit app displays featured images using Unsplash API
+A simple UIKit app displays latest movies using TheMoviesDB API
 
 <br />
 
@@ -13,8 +13,8 @@ A simple UIKit app displays featured images using Unsplash API
     
 ## Tech Stack
 - UIKit
+- RXSwift/RXCocoa
 - Architectural pattern (MVVM)
-- RXSwift/RXCoca
 - Clean Architecture
 - Design Patterns (Coordinator - Repository)
     
