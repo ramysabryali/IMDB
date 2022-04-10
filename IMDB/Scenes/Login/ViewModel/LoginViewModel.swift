@@ -32,8 +32,6 @@ class LoginViewModel {
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
-                }, onError: { error in
-                    print(error)
                 }
             ).disposed(by: disposeBag)
     }

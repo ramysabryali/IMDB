@@ -44,8 +44,10 @@ final class APIService: NSObject, APIServiceContract {
                         
                         return observer.onNext(.success(decoded))
                     },
-                    onError: {error in
-                        observer.onError(error)
+                    onError: { [weak self] error in
+                        guard let self = self else { return }
+                        observer.onNext(.failure(self.handleError(using: error)))
+//                        observer.onError(error)
                         observer.onCompleted()
                     }
                 )
