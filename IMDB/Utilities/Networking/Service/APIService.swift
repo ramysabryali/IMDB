@@ -6,63 +6,50 @@
 //
 
 import Foundation
-import Combine
-import Security
+import RxSwift
+import RxCocoa
 
-final class APIService: NSObject {
-    
+final class APIService: NSObject, APIServiceContract {
     static let shared = APIService()
-        
-    private(set) lazy var session: URLSession = {
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.timeoutIntervalForRequest = NetworkConstants.timeoutIntervalForRequest
-        return URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-    }()
     
-    private let serviceQueue: DispatchQueue
+    private override init() {}
     
-    // MARK: - Init
-    private override init() {
-        self.serviceQueue = .init(
-            label: "service",
-            qos: .userInteractive,
-            attributes: .concurrent
-        )
-        super.init()
-    }
-}
-
-extension APIService: APIServiceContract {
     func request<T: Decodable>(
         using request: URLRequest,
         responseType: T.Type = T.self,
         decoder: JSONDecoder = .init(),
         retry: Int = NetworkConstants.retries
-    ) -> AnyPublisher<T, BaseError> {
-        
-        return session
-            .dataTaskPublisher(for: request)
-            .retry(retry)
-            .print()
-            .tryMap { response in
-                guard
-                    let httpResponse = response.response as? HTTPURLResponse
-                else {
-                    throw URLError(.badServerResponse)
-                }
-                
-                let statusCode: Int = httpResponse.statusCode
-                
-                guard NetworkConstants.Range.statusCode.contains(statusCode) else {
-                    throw ErrorResolver.shared.getError(code: statusCode)
-                }
-                
-                return response.data
-            }
-            .receive(on: serviceQueue)
-            .decode(type: T.self, decoder: decoder)
-            .mapError(handleError(using:))
-            .eraseToAnyPublisher()
+    ) -> Observable<Result<T, BaseError>> {
+        return Observable.create { observer in
+            URLSession
+                .shared
+                .rx
+                .response(request: request)
+                .debug(request.url?.absoluteString)
+                .subscribe(
+                    onNext: { response in
+                        let statusCode: Int = response.response.statusCode
+                        
+                        guard NetworkConstants.Range.statusCode.contains(statusCode) else {
+                            observer.onNext(.failure(ErrorResolver.shared.getError(code: statusCode)))
+                            observer.onCompleted()
+                            return
+                        }
+                        
+                        guard let decoded = try? decoder.decode(responseType, from: response.data) else {
+                            observer.onNext(.failure(ErrorResolver.shared.getError(for: .mapping)))
+                            observer.onCompleted()
+                            return
+                        }
+                        
+                        return observer.onNext(.success(decoded))
+                    },
+                    onError: {error in
+                        observer.onError(error)
+                        observer.onCompleted()
+                    }
+                )
+        }
     }
 }
 

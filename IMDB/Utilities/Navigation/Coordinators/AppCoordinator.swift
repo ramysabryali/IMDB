@@ -15,7 +15,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        navigationController.viewControllers = [UIViewController()]
+        navigationController.viewControllers = [LoginViewController()]
 //        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
 //        homeCoordinator.start()
     }

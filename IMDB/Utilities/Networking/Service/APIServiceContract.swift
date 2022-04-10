@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Combine
+import RxSwift
 
 protocol APIServiceContract {
     func request<T: Decodable>(
@@ -14,16 +14,16 @@ protocol APIServiceContract {
         responseType: T.Type,
         decoder: JSONDecoder,
         retry: Int
-    ) -> AnyPublisher<T, BaseError>
+    ) -> Observable<Result<T, BaseError>>
 }
-
-// MARK: - APIServiceContract+Handle request func default implementation
 
 extension APIServiceContract {
     func request<T: Decodable>(
         using request: URLRequest,
-        responseType: T.Type
-    ) -> AnyPublisher<T, BaseError> {
+        responseType: T.Type = T.self,
+        decoder: JSONDecoder = .init(),
+        retry: Int = NetworkConstants.retries
+    ) -> Observable<Result<T, BaseError>> {
         self.request(
             using: request,
             responseType: responseType,
