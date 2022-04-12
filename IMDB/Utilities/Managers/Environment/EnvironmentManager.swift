@@ -17,6 +17,8 @@ final class EnvironmentManager {
                 
         case serverScheme = "SERVER_SCHEME"
         case serverHost = "SERVER_HOST"
+        case apiKey = "MOVIES_API_KEY"
+        case apiAccessToken = "MOVIES_API_ACCESS_TOKEN"
     }
     
     static let shared = EnvironmentManager()

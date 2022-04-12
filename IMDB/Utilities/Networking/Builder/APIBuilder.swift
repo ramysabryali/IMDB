@@ -11,7 +11,7 @@ class APIBuilder {
     private(set) var urlRequest: URLRequest
     
     private var clientID: String {
-        return  CredentialManager.shared.servicesClientId
+        return  EnvironmentManager.shared.string(key: .apiKey)
     }
    
     init() {
@@ -84,6 +84,14 @@ class APIBuilder {
 
         return self
     }
+    
+    @discardableResult
+    public func setAPIKey() -> APIBuilder {
+        guard let url = self.urlRequest.url else { return self }
+        let absoluteURLString: String = url.absoluteString + "?api_key=\(clientID)"
+        self.urlRequest.url = URL(string: absoluteURLString)
+        return self
+    }
   
     func build() -> URLRequest {
         guard
@@ -93,10 +101,7 @@ class APIBuilder {
             fatalError("API should contain at least one path.")
         }
         
-        setClientId()
-                
         self.urlRequest.setValue(ContentType.json, forHTTPHeaderField: HTTPHeader.contentType)
-        
         return self.urlRequest
     }
 }
@@ -107,12 +112,5 @@ private extension APIBuilder {
         let baseAppend = base?.appendingPathComponent(path).absoluteString.removingPercentEncoding
         guard let baseAppend = baseAppend, let newURL = URL(string: baseAppend) else { return }
         self.urlRequest.url = newURL
-    }
-    
-    // Set Client ID in each url request
-    func setClientId() {
-        guard let url = self.urlRequest.url else { return }
-        let absoluteURLString: String = url.absoluteString + "&client_id=\(clientID)"
-        self.urlRequest.url = URL(string: absoluteURLString)
     }
 }

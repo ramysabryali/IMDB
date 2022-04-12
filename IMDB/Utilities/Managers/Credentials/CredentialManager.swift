@@ -14,10 +14,6 @@ final class CredentialManager {
 }
 
 extension CredentialManager {
-    var servicesClientId: String {
-        return "R7s7Bf46y11kk8i2dQX8YlH6w0cz20iuyLNXfvMd4bo"
-    }
-    
     var userName: String? {
         return fetchItem(for: .username)
     }
