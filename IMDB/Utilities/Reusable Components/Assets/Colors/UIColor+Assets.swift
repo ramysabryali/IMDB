@@ -1,5 +1,5 @@
 //
-//  UIColor+Helpers.swift
+//  UIColor+Assets.swift
 //  IMDB
 //
 //  Created by Ramy Sabry on 12/04/2022.

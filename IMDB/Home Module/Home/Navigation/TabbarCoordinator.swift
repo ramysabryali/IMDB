@@ -78,7 +78,7 @@ private extension TabbarCoordinator {
 
         navigationController.tabBarItem = UITabBarItem.init(
             title: itemView.title,
-            image: nil,
+            image: itemView.iconImage,
             tag: itemView.orderNumber
         )
         setViewController(for: itemView, to: navigationController)

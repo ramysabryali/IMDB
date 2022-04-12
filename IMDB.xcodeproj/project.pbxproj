@@ -14,7 +14,7 @@
 		DC2A8C242804ECF6002D86AA /* MoviesSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC2A8C222804ECF6002D86AA /* MoviesSearchViewController.xib */; };
 		DC2A8C262804F5B3002D86AA /* TabbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C252804F5B3002D86AA /* TabbarItemView.swift */; };
 		DC2A8C292804F5FB002D86AA /* MoviesSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C282804F5FB002D86AA /* MoviesSearchViewModel.swift */; };
-		DC2A8C2D2804FE30002D86AA /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C2C2804FE30002D86AA /* UIColor+Helpers.swift */; };
+		DC2A8C2D2804FE30002D86AA /* UIColor+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C2C2804FE30002D86AA /* UIColor+Assets.swift */; };
 		DC2A8C2F2804FE6A002D86AA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC2A8C2E2804FE6A002D86AA /* Colors.xcassets */; };
 		DC2A8C342805022E002D86AA /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C322805022E002D86AA /* VideosViewController.swift */; };
 		DC2A8C352805022E002D86AA /* VideosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC2A8C332805022E002D86AA /* VideosViewController.xib */; };
@@ -30,6 +30,7 @@
 		DC2A8C4F28051EA6002D86AA /* TabbarCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C4E28051EA6002D86AA /* TabbarCoordinatorProtocol.swift */; };
 		DC2A8C532805B1E9002D86AA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C522805B1E9002D86AA /* ProfileViewModel.swift */; };
 		DC2A8C552805B213002D86AA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C542805B213002D86AA /* ProfileCoordinator.swift */; };
+		DC2A8C582805BC89002D86AA /* Images+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A8C572805BC89002D86AA /* Images+Assets.swift */; };
 		DC650C4D27FDBDD100D11F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC650C4C27FDBDD100D11F84 /* AppDelegate.swift */; };
 		DC650C5627FDBDD300D11F84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC650C5527FDBDD300D11F84 /* Assets.xcassets */; };
 		DC650C5927FDBDD300D11F84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC650C5727FDBDD300D11F84 /* LaunchScreen.storyboard */; };
@@ -87,7 +88,7 @@
 		DC2A8C222804ECF6002D86AA /* MoviesSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesSearchViewController.xib; sourceTree = "<group>"; };
 		DC2A8C252804F5B3002D86AA /* TabbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemView.swift; sourceTree = "<group>"; };
 		DC2A8C282804F5FB002D86AA /* MoviesSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchViewModel.swift; sourceTree = "<group>"; };
-		DC2A8C2C2804FE30002D86AA /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		DC2A8C2C2804FE30002D86AA /* UIColor+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Assets.swift"; sourceTree = "<group>"; };
 		DC2A8C2E2804FE6A002D86AA /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DC2A8C322805022E002D86AA /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		DC2A8C332805022E002D86AA /* VideosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosViewController.xib; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		DC2A8C4E28051EA6002D86AA /* TabbarCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		DC2A8C522805B1E9002D86AA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DC2A8C542805B213002D86AA /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		DC2A8C572805BC89002D86AA /* Images+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Images+Assets.swift"; sourceTree = "<group>"; };
 		DC650C4927FDBDD100D11F84 /* IMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC650C4C27FDBDD100D11F84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC650C5527FDBDD300D11F84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		DC2A8C2A2804FE10002D86AA /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				DC2A8C562805BC7D002D86AA /* Images */,
 				DC2A8C2B2804FE1C002D86AA /* Colors */,
 			);
 			path = Assets;
@@ -236,7 +239,7 @@
 		DC2A8C2B2804FE1C002D86AA /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				DC2A8C2C2804FE30002D86AA /* UIColor+Helpers.swift */,
+				DC2A8C2C2804FE30002D86AA /* UIColor+Assets.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -326,6 +329,14 @@
 				DC2A8C522805B1E9002D86AA /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DC2A8C562805BC7D002D86AA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DC2A8C572805BC89002D86AA /* Images+Assets.swift */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		DC650C4027FDBDD100D11F84 = {
@@ -896,6 +907,7 @@
 				DC650CB727FDC55400D11F84 /* CredentialManager.swift in Sources */,
 				DC650CC127FDC55400D11F84 /* Collection+Helpers.swift in Sources */,
 				DC77976B2801E44C003B545F /* LoginViewController.swift in Sources */,
+				DC2A8C582805BC89002D86AA /* Images+Assets.swift in Sources */,
 				DC650CC527FDC55400D11F84 /* Optional+Helpers.swift in Sources */,
 				DC650CAD27FDC55400D11F84 /* Constants.swift in Sources */,
 				DC650CC227FDC55400D11F84 /* UIApplication+UIHelpers.swift in Sources */,
@@ -917,7 +929,7 @@
 				DC2A8C4D28051928002D86AA /* CoordinatorDelegate.swift in Sources */,
 				DC650CC427FDC55400D11F84 /* UICollectionView+Helpers.swift in Sources */,
 				DC650CA827FDC55400D11F84 /* NetworkContentType.swift in Sources */,
-				DC2A8C2D2804FE30002D86AA /* UIColor+Helpers.swift in Sources */,
+				DC2A8C2D2804FE30002D86AA /* UIColor+Assets.swift in Sources */,
 				DC2A8C292804F5FB002D86AA /* MoviesSearchViewModel.swift in Sources */,
 				DC650C4D27FDBDD100D11F84 /* AppDelegate.swift in Sources */,
 				DC650CBF27FDC55400D11F84 /* AlertItem.swift in Sources */,

@@ -5,7 +5,7 @@
 //  Created by Ramy Sabry on 12/04/2022.
 //
 
-import Foundation
+import UIKit
 
 enum TabbarItemView {
     case home
@@ -31,7 +31,7 @@ extension TabbarItemView {
             return "Sign in"
             
         case .profile:
-            return "Profile"
+            return "You"
         }
     }
     
@@ -51,22 +51,19 @@ extension TabbarItemView {
         }
     }
     
-    var iconName: String {
+    var iconImage: UIImage {
         switch self {
         case .home:
-            return "Home"
+            return UIImage.TabBar.home
             
         case .search:
-            return "Search"
+            return UIImage.TabBar.search
             
         case .videos:
-            return "Video"
+            return UIImage.TabBar.videos
             
-        case .login:
-            return "Sign in"
-            
-        case .profile:
-            return "Profile"
+        case .login, .profile:
+            return UIImage.TabBar.user_profile
         }
     }
 }
