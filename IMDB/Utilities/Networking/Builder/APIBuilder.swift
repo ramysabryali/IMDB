@@ -11,7 +11,7 @@ class APIBuilder {
     private(set) var urlRequest: URLRequest
     
     private var clientID: String {
-        return  CredentialManager.shared.clientID
+        return  CredentialManager.shared.servicesClientId
     }
    
     init() {

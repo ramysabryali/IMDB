@@ -5,18 +5,17 @@
 //  Created by Ramy Sabry on 29/03/2022.
 //
 
-import Combine
+import RxSwift
 
 class DisposeObject {
     var deinitCalled: (() -> Void)?
-    var cancellables: Set<AnyCancellable>
+    var disposeBag: DisposeBag
     
     init() {
-        self.cancellables = Set<AnyCancellable>()
+        self.disposeBag = DisposeBag()
     }
     
     deinit {
-        self.cancellables.removeAll()
         deinitCalled?()
     }
 }

@@ -7,7 +7,17 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
+    var childCoordinators: [Coordinator] { get set }
     var navigationController: UINavigationController { get set }
+    var endDelegate: CoordinatorEndDelegate? { get set }
+    
     func start()
+}
+
+extension Coordinator {
+    func finish() {
+        childCoordinators.removeAll()
+        endDelegate?.coordinatorDidEnd(self)
+    }
 }

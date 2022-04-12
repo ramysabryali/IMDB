@@ -10,9 +10,17 @@ import UIKit
 class LoginViewController: BaseViewController {
 
     private var viewModel = LoginViewModel()
+    weak var coordinator: RegistrationCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchData()
+    }
+    
+    @IBAction func loginButtonAction(sender: UIButton) {
+        coordinator?.finish()
+    }
+    
+    deinit {
+        print("deinit Login View Controller")
     }
 }
