@@ -6,8 +6,12 @@
 //
 
 import UIKit
-import Combine
+import RxSwift
 
 class BaseViewController: UIViewController {
-    var cancellables = Set<AnyCancellable>()
+    var disposeBag = DisposeBag()
+    
+    deinit {
+        print("deinit ", self.self)
+    }
 }

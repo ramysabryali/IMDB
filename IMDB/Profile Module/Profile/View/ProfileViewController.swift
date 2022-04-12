@@ -8,9 +8,15 @@
 import UIKit
 
 class ProfileViewController: BaseViewController {
-
+    private var viewModel = ProfileViewModel()
+    weak var coordinator: ProfileCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.lightGray
+    }
+    
+    @IBAction func logoutButtonAction(sender: UIButton) {
+        CredentialManager.shared.delete(service: .username)
+        coordinator?.finish()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TabbarViewController.swift
+//  TabbarItemView.swift
 //  IMDB
 //
 //  Created by Ramy Sabry on 12/04/2022.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-enum TabbarViewController {
+enum TabbarItemView {
     case home
     case search
-    case video
+    case videos
     case login
     case profile
 }
 
-extension TabbarViewController {
+extension TabbarItemView {
     var title: String {
         switch self {
         case .home:
@@ -24,8 +24,8 @@ extension TabbarViewController {
         case .search:
             return "Search"
             
-        case .video:
-            return "Video"
+        case .videos:
+            return "Videos"
             
         case .login:
             return "Sign in"
@@ -43,7 +43,7 @@ extension TabbarViewController {
         case .search:
             return 1
             
-        case .video:
+        case .videos:
             return 2
             
         case .login, .profile:
@@ -59,7 +59,7 @@ extension TabbarViewController {
         case .search:
             return "Search"
             
-        case .video:
+        case .videos:
             return "Video"
             
         case .login:

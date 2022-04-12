@@ -11,13 +11,31 @@ final class CredentialManager {
     static let shared = CredentialManager()
     
     private init() {}
-    
+}
+
+extension CredentialManager {
     var servicesClientId: String {
         return "R7s7Bf46y11kk8i2dQX8YlH6w0cz20iuyLNXfvMd4bo"
     }
     
     var userName: String? {
         return fetchItem(for: .username)
+    }
+}
+
+extension CredentialManager {
+    func delete(service: KeychainKey) {
+        do {
+            try KeychainManager.shared.delete(service: service.value)
+        } catch KeychainError.unexpectedStatus(let status) {
+            print("Service: \(service.rawValue) did fail while deleting with an unexpected status code: \(status)")
+        } catch {
+            print("Service: \(service.rawValue) did fail while deleting")
+        }
+    }
+    
+    func set(userName: String) {
+        saveItem(data: userName, service: .username)
     }
 }
 
@@ -45,16 +63,6 @@ private extension CredentialManager {
             print("Service: \(service.rawValue) did fail while saving with an unexpected status code: \(status)")
         } catch {
             print("Service: \(service.rawValue) did fail while saving")
-        }
-    }
-    
-    func delete(service: KeychainKey) {
-        do {
-            try KeychainManager.shared.delete(service: service.value)
-        } catch KeychainError.unexpectedStatus(let status) {
-            print("Service: \(service.rawValue) did fail while deleting with an unexpected status code: \(status)")
-        } catch {
-            print("Service: \(service.rawValue) did fail while deleting")
         }
     }
 }

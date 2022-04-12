@@ -17,10 +17,7 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func loginButtonAction(sender: UIButton) {
+        CredentialManager.shared.set(userName: "Ramy Sabry")
         coordinator?.finish()
-    }
-    
-    deinit {
-        print("deinit Login View Controller")
     }
 }

@@ -7,23 +7,22 @@
 
 import UIKit
 
-protocol TabbarCoordinatorProtocol: Coordinator {
-    var tabbarController: UITabBarController { get set }
-    var currentTab: Int { get }
-}
-
 final class TabbarCoordinator: NSObject, TabbarCoordinatorProtocol {
     private var credentialManager: CredentialManager
+    private let homeViewController = HomeViewController()
+    private let movieSearchViewController = MoviesSearchViewController()
+    private let videosViewController = VideosViewController()
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var tabbarController: UITabBarController
-    weak var endDelegate: CoordinatorEndDelegate?
+    weak var delegate: CoordinatorDelegate?
+    
     var currentTab: Int {
         return tabbarController.selectedIndex
     }
     
-    required init(
+    init(
         _ navigationController: UINavigationController,
         credentialManager: CredentialManager = CredentialManager.shared
     ) {
@@ -33,25 +32,37 @@ final class TabbarCoordinator: NSObject, TabbarCoordinatorProtocol {
     }
     
     func start() {
-        var views: [TabbarViewController] = [.home, .search, .video]
-        
-        credentialManager.userName.isNotNil ? views.append(.profile) : views.append(.login)
-        
-        views = views.sorted(by: { $0.orderNumber < $1.orderNumber })
-        
-        // Initialization of ViewControllers or these pages
-        let viewControllers: [UINavigationController] = views.map({ getTabController($0) })
-        prepareTabBarController(withTabControllers: viewControllers)
+        setTabbarControllers()
+        prepareTabBarController()
+    }
+}
+
+// MARK: - Private Properties
+
+private extension TabbarCoordinator {
+    var isUserLoggedIn: Bool {
+        return credentialManager.userName.isNotNil
     }
 }
 
 // MARK: - Private Methods
 
 private extension TabbarCoordinator {
-    func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
+    func setTabbarControllers() {
+        let views: [TabbarItemView] = [
+            .home,
+            .search,
+            .videos,
+            isUserLoggedIn ? .profile : .login
+        ].sorted(by: { $0.orderNumber < $1.orderNumber })
+        
+        let viewControllers: [UINavigationController] = views.map({ getTabController($0) })
+        tabbarController.setViewControllers(viewControllers, animated: false)
+    }
+    
+    func prepareTabBarController() {
         tabbarController.delegate = self
-        tabbarController.setViewControllers(tabControllers, animated: true)
-        tabbarController.selectedIndex = TabbarViewController.home.orderNumber
+        tabbarController.selectedIndex = TabbarItemView.home.orderNumber
         tabbarController.tabBar.isTranslucent = false
         tabbarController.tabBar.tintColor = UIColor.Core.main
 //        tabbarController.tabBar.barTintColor = .brown
@@ -61,62 +72,61 @@ private extension TabbarCoordinator {
         navigationController.setViewControllers([tabbarController], animated: false)
     }
     
-    private func getTabController(_ page: TabbarViewController) -> UINavigationController {
+    func getTabController(_ itemView: TabbarItemView) -> UINavigationController {
         let navigationController = UINavigationController()
         navigationController.setNavigationBarHidden(true, animated: false)
 
         navigationController.tabBarItem = UITabBarItem.init(
-            title: page.title,
+            title: itemView.title,
             image: nil,
-            tag: page.orderNumber
+            tag: itemView.orderNumber
         )
-
+        setViewController(for: itemView, to: navigationController)
+        return navigationController
+    }
+    
+    func setViewController(
+        for page: TabbarItemView,
+        to navigationController: UINavigationController
+    ) {
         switch page {
         case .home:
-            let homeViewController = HomeViewController()
             homeViewController.coordinator = self
             navigationController.pushViewController(homeViewController, animated: true)
             
         case .search:
-            let movieSearchViewController = MoviesSearchViewController()
             movieSearchViewController.coordinator = self
             navigationController.pushViewController(movieSearchViewController, animated: true)
             
-        case .video:
-            let videosViewController = VideoViewController()
+        case .videos:
             videosViewController.coordinator = self
             navigationController.pushViewController(videosViewController, animated: true)
             
         case .login:
             let registrationnCoordinator = RegistrationCoordinator(navigationController)
             registrationnCoordinator.start()
-            registrationnCoordinator.endDelegate = self
+            registrationnCoordinator.delegate = self
             childCoordinators.append(registrationnCoordinator)
             
         case .profile:
-            let profileViewController = ProfileViewController()
-            navigationController.pushViewController(profileViewController, animated: true)
+            let profileCoordinator = ProfileCoordinator(navigationController)
+            profileCoordinator.start()
+            profileCoordinator.delegate = self
+            childCoordinators.append(profileCoordinator)
             break
         }
-        
-        return navigationController
     }
 }
 
-extension TabbarCoordinator: CoordinatorEndDelegate {
+// MARK: - CoordinatorEndDelegate
+
+extension TabbarCoordinator: CoordinatorDelegate {
     func coordinatorDidEnd(_ childCoordinator: Coordinator) {
-        print(childCoordinators.count)
         childCoordinators.removeAll(where: { $0 === childCoordinator })
-        print(childCoordinators.count)
         
         switch childCoordinator {
-        case is RegistrationCoordinator:
-            var views: [TabbarViewController] = [.home, .search, .video, .profile]
-                        
-            views = views.sorted(by: { $0.orderNumber < $1.orderNumber })
-            let viewControllers: [UINavigationController] = views.map({ getTabController($0) })
-            tabbarController.setViewControllers(viewControllers, animated: false)
-            
+        case is RegistrationCoordinator, is ProfileCoordinator:
+            setTabbarControllers()
             break
             
         default:

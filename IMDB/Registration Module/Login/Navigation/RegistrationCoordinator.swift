@@ -10,7 +10,7 @@ import UIKit
 final class RegistrationCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    weak var endDelegate: CoordinatorEndDelegate?
+    weak var delegate: CoordinatorDelegate?
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
