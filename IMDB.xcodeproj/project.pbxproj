@@ -75,6 +75,12 @@
 		DC77976B2801E44C003B545F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7797692801E44C003B545F /* LoginViewController.swift */; };
 		DC77976C2801E44C003B545F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC77976A2801E44C003B545F /* LoginViewController.xib */; };
 		DC77976F2801E46D003B545F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77976E2801E46D003B545F /* LoginViewModel.swift */; };
+		DC9DD30928065AB80050FA84 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DD30828065AB80050FA84 /* ProgressHUD.swift */; };
+		DC9DD30B28065BDC0050FA84 /* ProgressHUDAnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DD30A28065BDC0050FA84 /* ProgressHUDAnimationType.swift */; };
+		DC9DD30D28065BF10050FA84 /* ProgressHUDAnimatedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DD30C28065BF10050FA84 /* ProgressHUDAnimatedIcon.swift */; };
+		DC9DD30F28065C0E0050FA84 /* ProgressHUDAlertIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DD30E28065C0E0050FA84 /* ProgressHUDAlertIcon.swift */; };
+		DC9DD31128065DB00050FA84 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DD31028065DB00050FA84 /* ProgressView.swift */; };
+		DC9DD3182806616E0050FA84 /* ProgressDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9DD3172806616E0050FA84 /* ProgressDisplayer.swift */; };
 		DCA51EBD2803A2CF00B2E4D9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA51EBB2803A2CF00B2E4D9 /* HomeViewController.swift */; };
 		DCA51EBE2803A2CF00B2E4D9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCA51EBC2803A2CF00B2E4D9 /* HomeViewController.xib */; };
 		DCA51EC02803A2E000B2E4D9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA51EBF2803A2E000B2E4D9 /* HomeViewModel.swift */; };
@@ -153,6 +159,12 @@
 		DC7797692801E44C003B545F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DC77976A2801E44C003B545F /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DC77976E2801E46D003B545F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DC9DD30828065AB80050FA84 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		DC9DD30A28065BDC0050FA84 /* ProgressHUDAnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDAnimationType.swift; sourceTree = "<group>"; };
+		DC9DD30C28065BF10050FA84 /* ProgressHUDAnimatedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDAnimatedIcon.swift; sourceTree = "<group>"; };
+		DC9DD30E28065C0E0050FA84 /* ProgressHUDAlertIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDAlertIcon.swift; sourceTree = "<group>"; };
+		DC9DD31028065DB00050FA84 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		DC9DD3172806616E0050FA84 /* ProgressDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDisplayer.swift; sourceTree = "<group>"; };
 		DCA51EBB2803A2CF00B2E4D9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DCA51EBC2803A2CF00B2E4D9 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		DCA51EBF2803A2E000B2E4D9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -575,6 +587,7 @@
 		DC650C8C27FDC55400D11F84 /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
+				DC9DD30728065A8C0050FA84 /* Views */,
 				DC2A8C2A2804FE10002D86AA /* Assets */,
 				DC650C8D27FDC55400D11F84 /* Alert */,
 				DC650C9027FDC55400D11F84 /* Controls */,
@@ -767,6 +780,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DC9DD30628065A730050FA84 /* Loading Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				DC9DD316280661600050FA84 /* Displayer */,
+				DC9DD315280661560050FA84 /* Views */,
+				DC9DD31228065E420050FA84 /* Helpers */,
+			);
+			path = "Loading Indicator";
+			sourceTree = "<group>";
+		};
+		DC9DD30728065A8C0050FA84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC9DD30628065A730050FA84 /* Loading Indicator */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC9DD31228065E420050FA84 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DC9DD30E28065C0E0050FA84 /* ProgressHUDAlertIcon.swift */,
+				DC9DD30C28065BF10050FA84 /* ProgressHUDAnimatedIcon.swift */,
+				DC9DD30A28065BDC0050FA84 /* ProgressHUDAnimationType.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DC9DD315280661560050FA84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC9DD30828065AB80050FA84 /* ProgressHUD.swift */,
+				DC9DD31028065DB00050FA84 /* ProgressView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC9DD316280661600050FA84 /* Displayer */ = {
+			isa = PBXGroup;
+			children = (
+				DC9DD3172806616E0050FA84 /* ProgressDisplayer.swift */,
+			);
+			path = Displayer;
+			sourceTree = "<group>";
+		};
 		DCA51EB82803A00800B2E4D9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +973,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC9DD3182806616E0050FA84 /* ProgressDisplayer.swift in Sources */,
 				DC650CB827FDC55400D11F84 /* AppCoordinator.swift in Sources */,
 				DC650CB027FDC55400D11F84 /* NetworkConstants.swift in Sources */,
 				DC2A8C532805B1E9002D86AA /* ProfileViewModel.swift in Sources */,
@@ -933,8 +992,11 @@
 				DC2A8C552805B213002D86AA /* ProfileCoordinator.swift in Sources */,
 				DC2A8C232804ECF6002D86AA /* MoviesSearchViewController.swift in Sources */,
 				DC650CBD27FDC55400D11F84 /* BaseViewController.swift in Sources */,
+				DC9DD30F28065C0E0050FA84 /* ProgressHUDAlertIcon.swift in Sources */,
 				DC650CBE27FDC55400D11F84 /* AlertAction.swift in Sources */,
 				DC650CC327FDC55400D11F84 /* Publisher+Helpers.swift in Sources */,
+				DC9DD30D28065BF10050FA84 /* ProgressHUDAnimatedIcon.swift in Sources */,
+				DC9DD30928065AB80050FA84 /* ProgressHUD.swift in Sources */,
 				DC650CBB27FDC55400D11F84 /* ViewModelState.swift in Sources */,
 				DC650CBA27FDC55400D11F84 /* BaseViewModel.swift in Sources */,
 				DC2A8C4A280506BC002D86AA /* ProfileViewController.swift in Sources */,
@@ -946,6 +1008,7 @@
 				DC650CA827FDC55400D11F84 /* NetworkContentType.swift in Sources */,
 				DC2A8C2D2804FE30002D86AA /* UIColor+Assets.swift in Sources */,
 				DC2A8C292804F5FB002D86AA /* MoviesSearchViewModel.swift in Sources */,
+				DC9DD31128065DB00050FA84 /* ProgressView.swift in Sources */,
 				DC650C4D27FDBDD100D11F84 /* AppDelegate.swift in Sources */,
 				DC650CBF27FDC55400D11F84 /* AlertItem.swift in Sources */,
 				DC650CC727FDC55400D11F84 /* View+Helpers.swift in Sources */,
@@ -963,6 +1026,7 @@
 				DC650CAF27FDC55400D11F84 /* ErrorConstants.swift in Sources */,
 				DC2A8C4128050539002D86AA /* KeychainConstants.swift in Sources */,
 				DC650CA727FDC55400D11F84 /* NetworkHeaders.swift in Sources */,
+				DC9DD30B28065BDC0050FA84 /* ProgressHUDAnimationType.swift in Sources */,
 				DC650CAE27FDC55400D11F84 /* APIConstants.swift in Sources */,
 				DC650CAB27FDC55400D11F84 /* APIService.swift in Sources */,
 				DC2A8C5D2805F4D0002D86AA /* MovieData.swift in Sources */,

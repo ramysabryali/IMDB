@@ -11,6 +11,9 @@ extension UIColor {
     enum Core {
         static let main = "MainColor".uiColor
         static let tabbar = "TabBarColor".uiColor
+        static let yelloColor = "YelloColor".uiColor
+        static let mainBlackColor = "MainBlackColor".uiColor
+        static let constantBlackColor = "ConstantBlackColor".uiColor
     }
 }
 

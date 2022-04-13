@@ -8,13 +8,14 @@
 import UIKit
 import RxCocoa
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
 
     private var viewModel = HomeViewModel()
     weak var coordinator: TabbarCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindLoadingIndicator(to: viewModel.stateRelay)
         viewModel.fetchAllMoviesData()
     }
 }
