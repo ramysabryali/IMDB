@@ -18,25 +18,6 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
-        
-//        moviesSubject.onNext([
-//            .init(
-//                id: 100,
-//                adult: false,
-//                backdropPath: nil,
-//                genreIDS: nil,
-//                originalLanguage: nil,
-//                originalTitle: nil,
-//                overview: nil,
-//                popularity: nil,
-//                posterPath: nil,
-//                releaseDate: nil,
-//                title: "Ramy Sabry",
-//                video: true,
-//                voteAverage: nil,
-//                voteCount: 2
-//            )
-//        ])
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
