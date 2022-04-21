@@ -6,16 +6,92 @@
 //
 
 import RxSwift
+import RxDataSources
+
+enum HomeViewSections {
+//        case topSlide = ""
+    case topRated
+    case mostPopular
+    case nowPlaying
+    case upcoming
+}
+
+extension HomeViewSections {
+    var title: String {
+        switch self {
+        case .topRated:
+            return "Top rated"
+            
+        case .mostPopular:
+            return "Most popular"
+            
+        case .nowPlaying:
+            return "Now playing"
+            
+        case .upcoming:
+            return "Upcoming"
+        }
+    }
+    
+    var piriority: Int {
+        switch self {
+        case .topRated:
+            return 1
+            
+        case .mostPopular:
+            return 2
+            
+        case .nowPlaying:
+            return 3
+            
+        case .upcoming:
+            return 4
+        }
+    }
+}
+
+struct SectionOfCustomData {
+    var items: [Int]
+//    var movies: [MovieData]
+    var movies: PublishSubject<[MovieData]>
+    var type: HomeViewSections
+    
+    init(
+        items: [Int],
+        movies: [MovieData],
+        type: HomeViewSections
+    ) {
+        self.items = items
+        self.movies = .init()
+        self.movies.onNext(movies)
+        self.type = type
+    }
+}
+
+extension SectionOfCustomData: SectionModelType {
+    typealias Item = Int
+
+    init(original: SectionOfCustomData, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
+
+//struct HomeSectionData {
+//    var movies: PublishSubject<[MovieData]>
+//}
 
 final class HomeViewModel: BaseViewModel {
     private let apiService: APIServiceContract
 //    private let pageSize: Int = Constants.pageSize
 //    private var page: Int = 1
     
-    var topRatedMovies: [MovieData] = []
-    var popularMovies: [MovieData] = []
-    var nowPlayingMovies: [MovieData] = []
-    var upComingMovies: [MovieData] = []
+    private(set) var sections = PublishSubject<[SectionOfCustomData]>()
+    
+//    private(set) var topRatedMovies = PublishSubject<[MovieData]>()
+//    var popularMovies: [MovieData] = []
+//    var nowPlayingMovies: [MovieData] = []
+//    var upComingMovies: [MovieData] = []
     
     init(apiService: APIServiceContract = APIService.shared) {
         self.apiService = apiService
@@ -54,18 +130,43 @@ final class HomeViewModel: BaseViewModel {
                 }
                 
                 // Handle success
-                self.topRatedMovies.append(
-                    contentsOf: self.getMoviesListIfExist(from: topRatedResult)
+                self.sections.onNext(
+                    [
+                        .init(
+                            items: [1],
+                            movies: self.getMoviesListIfExist(from: topRatedResult),
+                            type: .topRated
+                        ),
+                        .init(
+                            items: [1],
+                            movies: self.getMoviesListIfExist(from: popularResult),
+                            type: .mostPopular
+                        ),
+                        .init(
+                            items: [1],
+                            movies: self.getMoviesListIfExist(from: nowPlayingResult),
+                            type: .nowPlaying
+                        ),
+                        .init(
+                            items: [1],
+                            movies: self.getMoviesListIfExist(from: upcomingResult),
+                            type: .upcoming
+                        )
+                    ]
                 )
-                self.popularMovies.append(
-                    contentsOf: self.getMoviesListIfExist(from: popularResult)
-                )
-                self.nowPlayingMovies.append(
-                    contentsOf: self.getMoviesListIfExist(from: nowPlayingResult)
-                )
-                self.upComingMovies.append(
-                    contentsOf: self.getMoviesListIfExist(from: upcomingResult)
-                )
+                
+//                self.topRatedMovies.onNext(
+//                    self.getMoviesListIfExist(from: topRatedResult)
+//                )
+//                self.popularMovies.append(
+//                    contentsOf: self.getMoviesListIfExist(from: popularResult)
+//                )
+//                self.nowPlayingMovies.append(
+//                    contentsOf: self.getMoviesListIfExist(from: nowPlayingResult)
+//                )
+//                self.upComingMovies.append(
+//                    contentsOf: self.getMoviesListIfExist(from: upcomingResult)
+//                )
                 
                 self.stateRelay.accept(.successful)
             }.disposed(by: disposeBag)

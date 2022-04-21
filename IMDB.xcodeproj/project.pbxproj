@@ -84,6 +84,13 @@
 		DCA51EBD2803A2CF00B2E4D9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA51EBB2803A2CF00B2E4D9 /* HomeViewController.swift */; };
 		DCA51EBE2803A2CF00B2E4D9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCA51EBC2803A2CF00B2E4D9 /* HomeViewController.xib */; };
 		DCA51EC02803A2E000B2E4D9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA51EBF2803A2E000B2E4D9 /* HomeViewModel.swift */; };
+		DCCC7DCA2808ECF300AB8885 /* HomeTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DC92808ECF300AB8885 /* HomeTableViewHeader.swift */; };
+		DCCC7DCC2808ECFB00AB8885 /* HomeTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DCB2808ECFB00AB8885 /* HomeTableViewHeader.xib */; };
+		DCCC7DD12808EEAB00AB8885 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DCF2808EEAB00AB8885 /* MovieCollectionViewCell.swift */; };
+		DCCC7DD22808EEAB00AB8885 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DD02808EEAB00AB8885 /* MovieCollectionViewCell.xib */; };
+		DCCC7DD52808EECE00AB8885 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DD32808EECE00AB8885 /* HomeTableViewCell.swift */; };
+		DCCC7DD62808EECE00AB8885 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DD42808EECE00AB8885 /* HomeTableViewCell.xib */; };
+		DCCC7DD92810AC1500AB8885 /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DD82810AC1500AB8885 /* UITableView+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +175,13 @@
 		DCA51EBB2803A2CF00B2E4D9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DCA51EBC2803A2CF00B2E4D9 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		DCA51EBF2803A2E000B2E4D9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		DCCC7DC92808ECF300AB8885 /* HomeTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewHeader.swift; sourceTree = "<group>"; };
+		DCCC7DCB2808ECFB00AB8885 /* HomeTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewHeader.xib; sourceTree = "<group>"; };
+		DCCC7DCF2808EEAB00AB8885 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		DCCC7DD02808EEAB00AB8885 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		DCCC7DD32808EECE00AB8885 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		DCCC7DD42808EECE00AB8885 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		DCCC7DD82810AC1500AB8885 /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -628,6 +642,7 @@
 				DC650C9627FDC55400D11F84 /* UIApplication */,
 				DC650C9827FDC55400D11F84 /* Publisher */,
 				DC650C9A27FDC55400D11F84 /* UICollectionView */,
+				DCCC7DD72810ABFB00AB8885 /* UITableView */,
 				DC650C9C27FDC55400D11F84 /* Optional */,
 				DC650C9E27FDC55400D11F84 /* Dictionary */,
 				DC650CA027FDC55400D11F84 /* View */,
@@ -841,6 +856,8 @@
 			children = (
 				DCA51EBB2803A2CF00B2E4D9 /* HomeViewController.swift */,
 				DCA51EBC2803A2CF00B2E4D9 /* HomeViewController.xib */,
+				DCCC7DC32808EC0E00AB8885 /* Cells */,
+				DCCC7DC82808EC7800AB8885 /* Headers */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -851,6 +868,50 @@
 				DCA51EBF2803A2E000B2E4D9 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DCCC7DC32808EC0E00AB8885 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DCD2808EE7800AB8885 /* HomeTableViewCell */,
+				DCCC7DCE2808EE8300AB8885 /* MovieCollectionViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DCCC7DC82808EC7800AB8885 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DC92808ECF300AB8885 /* HomeTableViewHeader.swift */,
+				DCCC7DCB2808ECFB00AB8885 /* HomeTableViewHeader.xib */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		DCCC7DCD2808EE7800AB8885 /* HomeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DD32808EECE00AB8885 /* HomeTableViewCell.swift */,
+				DCCC7DD42808EECE00AB8885 /* HomeTableViewCell.xib */,
+			);
+			path = HomeTableViewCell;
+			sourceTree = "<group>";
+		};
+		DCCC7DCE2808EE8300AB8885 /* MovieCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DCF2808EEAB00AB8885 /* MovieCollectionViewCell.swift */,
+				DCCC7DD02808EEAB00AB8885 /* MovieCollectionViewCell.xib */,
+			);
+			path = MovieCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DCCC7DD72810ABFB00AB8885 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DD82810AC1500AB8885 /* UITableView+Helpers.swift */,
+			);
+			path = UITableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -913,6 +974,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCCC7DD62808EECE00AB8885 /* HomeTableViewCell.xib in Resources */,
+				DCCC7DD22808EEAB00AB8885 /* MovieCollectionViewCell.xib in Resources */,
 				DC650C5927FDBDD300D11F84 /* LaunchScreen.storyboard in Resources */,
 				DC2A8C352805022E002D86AA /* VideosViewController.xib in Resources */,
 				DC2A8C4B280506BC002D86AA /* ProfileViewController.xib in Resources */,
@@ -920,6 +983,7 @@
 				DC77976C2801E44C003B545F /* LoginViewController.xib in Resources */,
 				DC2A8C2F2804FE6A002D86AA /* Colors.xcassets in Resources */,
 				DCA51EBE2803A2CF00B2E4D9 /* HomeViewController.xib in Resources */,
+				DCCC7DCC2808ECFB00AB8885 /* HomeTableViewHeader.xib in Resources */,
 				DC2A8C242804ECF6002D86AA /* MoviesSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -975,6 +1039,7 @@
 			files = (
 				DC9DD3182806616E0050FA84 /* ProgressDisplayer.swift in Sources */,
 				DC650CB827FDC55400D11F84 /* AppCoordinator.swift in Sources */,
+				DCCC7DD52808EECE00AB8885 /* HomeTableViewCell.swift in Sources */,
 				DC650CB027FDC55400D11F84 /* NetworkConstants.swift in Sources */,
 				DC2A8C532805B1E9002D86AA /* ProfileViewModel.swift in Sources */,
 				DC650CB727FDC55400D11F84 /* CredentialManager.swift in Sources */,
@@ -990,6 +1055,7 @@
 				DC77976F2801E46D003B545F /* LoginViewModel.swift in Sources */,
 				DC2A8C1E2804AC33002D86AA /* TabbarCoordinator.swift in Sources */,
 				DC2A8C552805B213002D86AA /* ProfileCoordinator.swift in Sources */,
+				DCCC7DCA2808ECF300AB8885 /* HomeTableViewHeader.swift in Sources */,
 				DC2A8C232804ECF6002D86AA /* MoviesSearchViewController.swift in Sources */,
 				DC650CBD27FDC55400D11F84 /* BaseViewController.swift in Sources */,
 				DC9DD30F28065C0E0050FA84 /* ProgressHUDAlertIcon.swift in Sources */,
@@ -1028,6 +1094,7 @@
 				DC650CA727FDC55400D11F84 /* NetworkHeaders.swift in Sources */,
 				DC9DD30B28065BDC0050FA84 /* ProgressHUDAnimationType.swift in Sources */,
 				DC650CAE27FDC55400D11F84 /* APIConstants.swift in Sources */,
+				DCCC7DD12808EEAB00AB8885 /* MovieCollectionViewCell.swift in Sources */,
 				DC650CAB27FDC55400D11F84 /* APIService.swift in Sources */,
 				DC2A8C5D2805F4D0002D86AA /* MovieData.swift in Sources */,
 				DC650CB527FDC55400D11F84 /* ErrorType+Message.swift in Sources */,
@@ -1037,6 +1104,7 @@
 				DC650CB927FDC55400D11F84 /* Coordinator.swift in Sources */,
 				DCA51EBD2803A2CF00B2E4D9 /* HomeViewController.swift in Sources */,
 				DC650CB327FDC55400D11F84 /* ErrorResolver.swift in Sources */,
+				DCCC7DD92810AC1500AB8885 /* UITableView+Helpers.swift in Sources */,
 				DC650CAC27FDC55400D11F84 /* APIBuilder.swift in Sources */,
 				DC650CB227FDC55400D11F84 /* BaseError.swift in Sources */,
 				DC2A8C3D280504DA002D86AA /* KeychainError.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 struct MovieData: Decodable {
     let id: Int
