@@ -16,6 +16,8 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
     private var viewModel = HomeViewModel()
     weak var coordinator: TabbarCoordinator?
     
+    lazy var dataSource = createTableViewDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindLoadingIndicator(to: viewModel.stateRelay)
@@ -29,7 +31,12 @@ private extension HomeViewController {
     
     func setupTableView() {
         tableView.registerCellNib(HomeTableViewCell.self)
-        let dataSource = createTableViewDataSource()
+        
+        tableView
+            .rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+        
         viewModel
             .sections
             .asObservable()
@@ -44,15 +51,33 @@ private extension HomeViewController {
             
             cell.collectionView.backgroundColor = UIColor.blue
             
-            if let itemData = try? dataSource.model(at: indexPath) as? HomeSectionRowItem {
-                print("of a7")
-                print("of a7")
-//                cell.moviesSubject.bind(to: <#T##[MovieData]...##[MovieData]#>)
-            }
+//            cell.moviesSubject
+//                .bind(to: item.movies)
+//                .disposed(by: self.disposeBag)
             
+            self.viewModel
+                .sections
+                
+                .subscribe(onNext: { data in
+                    print("\n")
+                    print("\n")
+                    print("\n")
+                    print(data)
+                    print("\n")
+                    print("\n")
+                    print("\n")
+                })
+                .disposed(by: self.disposeBag)
+
             return cell
         }, titleForHeaderInSection: { dataSource, index in
-            return dataSource.sectionModels[index].type.title
+            return dataSource.sectionModels[index].items.first?.type.title
         })
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
     }
 }

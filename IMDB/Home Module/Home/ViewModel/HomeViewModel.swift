@@ -35,25 +35,15 @@ extension HomeViewSections {
 }
 
 struct HomeSectionRowItem {
-    var items: [Int]
-//    var movies: [MovieData]
-    var movies: PublishSubject<[MovieData]>
-    var type: HomeViewSections
-    
-    init(
-        items: [Int],
-        movies: [MovieData],
-        type: HomeViewSections
-    ) {
+    var items: [HomeSectionRowData]
+
+    init(items: [HomeSectionRowData]) {
         self.items = items
-        self.movies = .init()
-        self.movies.onNext(movies)
-        self.type = type
     }
 }
 
 extension HomeSectionRowItem: SectionModelType {
-    typealias Item = Int
+    typealias Item = HomeSectionRowData
 
     init(original: HomeSectionRowItem, items: [Item]) {
         self = original
@@ -61,24 +51,30 @@ extension HomeSectionRowItem: SectionModelType {
     }
 }
 
-//struct HomeSectionRowItem {
-//    var movies: PublishSubject<[MovieData]>
-//}
+struct HomeSectionRowData {
+    var movies: PublishSubject<[MovieData]>
+    var type: HomeViewSections
+    
+    init(
+        movies: [MovieData],
+        type: HomeViewSections
+    ) {
+        self.movies = .init()
+        self.movies.onNext(movies)
+        self.type = type
+    }
+}
 
 final class HomeViewModel: BaseViewModel {
     private let apiService: APIServiceContract
+    private(set) var sections: PublishSubject<[HomeSectionRowItem]>
 //    private let pageSize: Int = Constants.pageSize
 //    private var page: Int = 1
     
-    private(set) var sections = PublishSubject<[HomeSectionRowItem]>()
-    
-//    private(set) var topRatedMovies = PublishSubject<[MovieData]>()
-//    var popularMovies: [MovieData] = []
-//    var nowPlayingMovies: [MovieData] = []
-//    var upComingMovies: [MovieData] = []
-    
+
     init(apiService: APIServiceContract = APIService.shared) {
         self.apiService = apiService
+        self.sections = .init()
         super.init()
     }
     
@@ -116,43 +112,17 @@ final class HomeViewModel: BaseViewModel {
                 // Handle success
                 self.sections.onNext(
                     [
-                        .init(
-                            items: [1],
-                            movies: self.getMoviesListIfExist(from: topRatedResult),
-                            type: .topRated
-                        ),
-                        .init(
-                            items: [1],
-                            movies: self.getMoviesListIfExist(from: popularResult),
-                            type: .mostPopular
-                        ),
-                        .init(
-                            items: [1],
-                            movies: self.getMoviesListIfExist(from: nowPlayingResult),
-                            type: .nowPlaying
-                        ),
-                        .init(
-                            items: [1],
-                            movies: self.getMoviesListIfExist(from: upcomingResult),
-                            type: .upcoming
-                        )
+                        .init(items: [.init(movies: self.getMoviesListIfExist(from: topRatedResult), type: .topRated)]),
+                        
+                            .init(items: [.init(movies: self.getMoviesListIfExist(from: popularResult), type: .mostPopular)]),
+                        
+                            .init(items: [.init(movies: self.getMoviesListIfExist(from: nowPlayingResult), type: .nowPlaying)]),
+                        
+                            .init(items: [.init(movies: self.getMoviesListIfExist(from: upcomingResult), type: .upcoming)])
                     ]
                 )
-                
-//                self.topRatedMovies.onNext(
-//                    self.getMoviesListIfExist(from: topRatedResult)
-//                )
-//                self.popularMovies.append(
-//                    contentsOf: self.getMoviesListIfExist(from: popularResult)
-//                )
-//                self.nowPlayingMovies.append(
-//                    contentsOf: self.getMoviesListIfExist(from: nowPlayingResult)
-//                )
-//                self.upComingMovies.append(
-//                    contentsOf: self.getMoviesListIfExist(from: upcomingResult)
-//                )
-                
                 self.stateRelay.accept(.successful)
+                self.sections.onCompleted()
             }.disposed(by: disposeBag)
     }
 }
