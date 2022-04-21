@@ -32,25 +32,9 @@ extension HomeViewSections {
             return "Upcoming"
         }
     }
-    
-    var piriority: Int {
-        switch self {
-        case .topRated:
-            return 1
-            
-        case .mostPopular:
-            return 2
-            
-        case .nowPlaying:
-            return 3
-            
-        case .upcoming:
-            return 4
-        }
-    }
 }
 
-struct SectionOfCustomData {
+struct HomeSectionRowItem {
     var items: [Int]
 //    var movies: [MovieData]
     var movies: PublishSubject<[MovieData]>
@@ -68,16 +52,16 @@ struct SectionOfCustomData {
     }
 }
 
-extension SectionOfCustomData: SectionModelType {
+extension HomeSectionRowItem: SectionModelType {
     typealias Item = Int
 
-    init(original: SectionOfCustomData, items: [Item]) {
+    init(original: HomeSectionRowItem, items: [Item]) {
         self = original
         self.items = items
     }
 }
 
-//struct HomeSectionData {
+//struct HomeSectionRowItem {
 //    var movies: PublishSubject<[MovieData]>
 //}
 
@@ -86,7 +70,7 @@ final class HomeViewModel: BaseViewModel {
 //    private let pageSize: Int = Constants.pageSize
 //    private var page: Int = 1
     
-    private(set) var sections = PublishSubject<[SectionOfCustomData]>()
+    private(set) var sections = PublishSubject<[HomeSectionRowItem]>()
     
 //    private(set) var topRatedMovies = PublishSubject<[MovieData]>()
 //    var popularMovies: [MovieData] = []

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxCocoa
+import RxSwift
 import RxDataSources
 
 class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
@@ -36,12 +37,18 @@ private extension HomeViewController {
             .disposed(by: disposeBag)
     }
     
-    func createTableViewDataSource() -> TableViewdataSource<SectionOfCustomData> {
-        return TableViewdataSource<SectionOfCustomData>(configureCell: { dataSource, tableView, indexPath, item -> UITableViewCell in
+    func createTableViewDataSource() -> TableViewdataSource<HomeSectionRowItem> {
+        return TableViewdataSource<HomeSectionRowItem>(configureCell: { dataSource, tableView, indexPath, item -> UITableViewCell in
             
-            let cell:HomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+            let cell: HomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
             
             cell.collectionView.backgroundColor = UIColor.blue
+            
+            if let itemData = try? dataSource.model(at: indexPath) as? HomeSectionRowItem {
+                print("of a7")
+                print("of a7")
+//                cell.moviesSubject.bind(to: <#T##[MovieData]...##[MovieData]#>)
+            }
             
             return cell
         }, titleForHeaderInSection: { dataSource, index in
