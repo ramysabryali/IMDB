@@ -39,7 +39,6 @@ private extension HomeViewController {
         
         viewModel
             .sections
-            .asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
@@ -51,22 +50,8 @@ private extension HomeViewController {
             
             cell.collectionView.backgroundColor = UIColor.blue
             
-//            cell.moviesSubject
-//                .bind(to: item.movies)
-//                .disposed(by: self.disposeBag)
-            
-            self.viewModel
-                .sections
-                
-                .subscribe(onNext: { data in
-                    print("\n")
-                    print("\n")
-                    print("\n")
-                    print(data)
-                    print("\n")
-                    print("\n")
-                    print("\n")
-                })
+            item.movies
+                .bind(to: cell.moviesSubject)
                 .disposed(by: self.disposeBag)
 
             return cell

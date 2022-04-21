@@ -52,15 +52,15 @@ extension HomeSectionRowItem: SectionModelType {
 }
 
 struct HomeSectionRowData {
-    var movies: PublishSubject<[MovieData]>
+    var movies: BehaviorSubject<[MovieData]>
     var type: HomeViewSections
     
     init(
         movies: [MovieData],
         type: HomeViewSections
     ) {
-        self.movies = .init()
-        self.movies.onNext(movies)
+        self.movies = .init(value: movies)
+//        self.movies.onNext(movies)
         self.type = type
     }
 }
@@ -110,17 +110,18 @@ final class HomeViewModel: BaseViewModel {
                 }
                 
                 // Handle success
-                self.sections.onNext(
-                    [
-                        .init(items: [.init(movies: self.getMoviesListIfExist(from: topRatedResult), type: .topRated)]),
-                        
-                            .init(items: [.init(movies: self.getMoviesListIfExist(from: popularResult), type: .mostPopular)]),
-                        
-                            .init(items: [.init(movies: self.getMoviesListIfExist(from: nowPlayingResult), type: .nowPlaying)]),
-                        
-                            .init(items: [.init(movies: self.getMoviesListIfExist(from: upcomingResult), type: .upcoming)])
-                    ]
-                )
+                self.sections
+                    .onNext(
+                        [
+                            .init(items: [.init(movies: self.getMoviesListIfExist(from: topRatedResult), type: .topRated)]),
+                            
+                                .init(items: [.init(movies: self.getMoviesListIfExist(from: popularResult), type: .mostPopular)]),
+                            
+                                .init(items: [.init(movies: self.getMoviesListIfExist(from: nowPlayingResult), type: .nowPlaying)]),
+                            
+                                .init(items: [.init(movies: self.getMoviesListIfExist(from: upcomingResult), type: .upcoming)])
+                        ]
+                    )
                 self.stateRelay.accept(.successful)
                 self.sections.onCompleted()
             }.disposed(by: disposeBag)
