@@ -25,6 +25,8 @@ class HomeTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - Private Methods
+
 private extension HomeTableViewCell {
     typealias CollectionViewdataSource = RxCollectionViewSectionedReloadDataSource
 
@@ -44,11 +46,13 @@ private extension HomeTableViewCell {
             )
             ) { row, data, cell in
                 cell.titleLabel.text = data.title
-                cell.backgroundColor = UIColor.yellow
+                cell.backgroundColor = UIColor.black
             }
             .disposed(by: disposeBag)
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension HomeTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

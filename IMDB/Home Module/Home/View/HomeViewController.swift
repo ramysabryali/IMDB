@@ -7,7 +7,6 @@
 
 import UIKit
 import RxCocoa
-import RxSwift
 import RxDataSources
 
 class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
@@ -15,9 +14,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
     
     private var viewModel = HomeViewModel()
     weak var coordinator: TabbarCoordinator?
-    
-    lazy var dataSource = createTableViewDataSource()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bindLoadingIndicator(to: viewModel.stateRelay)
@@ -25,6 +22,8 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
         viewModel.fetchAllMoviesData()
     }
 }
+
+// MARK: - Private Methods
 
 private extension HomeViewController {
     typealias TableViewdataSource = RxTableViewSectionedReloadDataSource
@@ -37,6 +36,7 @@ private extension HomeViewController {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
+        let dataSource = createTableViewDataSource()
         viewModel
             .sections
             .bind(to: tableView.rx.items(dataSource: dataSource))
@@ -50,16 +50,18 @@ private extension HomeViewController {
             
             cell.collectionView.backgroundColor = UIColor.blue
             
-            item.movies
+            item.moviesSubject
                 .bind(to: cell.moviesSubject)
                 .disposed(by: self.disposeBag)
 
             return cell
         }, titleForHeaderInSection: { dataSource, index in
-            return dataSource.sectionModels[index].items.first?.type.title
+            return dataSource.sectionModels[index].items.first?.movieGroupType.title
         })
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

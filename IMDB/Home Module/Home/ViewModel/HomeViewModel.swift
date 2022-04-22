@@ -6,72 +6,13 @@
 //
 
 import RxSwift
-import RxDataSources
-
-enum HomeViewSections {
-//        case topSlide = ""
-    case topRated
-    case mostPopular
-    case nowPlaying
-    case upcoming
-}
-
-extension HomeViewSections {
-    var title: String {
-        switch self {
-        case .topRated:
-            return "Top rated"
-            
-        case .mostPopular:
-            return "Most popular"
-            
-        case .nowPlaying:
-            return "Now playing"
-            
-        case .upcoming:
-            return "Upcoming"
-        }
-    }
-}
-
-struct HomeSectionRowItem {
-    var items: [HomeSectionRowData]
-
-    init(items: [HomeSectionRowData]) {
-        self.items = items
-    }
-}
-
-extension HomeSectionRowItem: SectionModelType {
-    typealias Item = HomeSectionRowData
-
-    init(original: HomeSectionRowItem, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}
-
-struct HomeSectionRowData {
-    var movies: BehaviorSubject<[MovieData]>
-    var type: HomeViewSections
-    
-    init(
-        movies: [MovieData],
-        type: HomeViewSections
-    ) {
-        self.movies = .init(value: movies)
-//        self.movies.onNext(movies)
-        self.type = type
-    }
-}
 
 final class HomeViewModel: BaseViewModel {
     private let apiService: APIServiceContract
     private(set) var sections: PublishSubject<[HomeSectionRowItem]>
-//    private let pageSize: Int = Constants.pageSize
-//    private var page: Int = 1
+    //    private let pageSize: Int = Constants.pageSize
+    //    private var page: Int = 1
     
-
     init(apiService: APIServiceContract = APIService.shared) {
         self.apiService = apiService
         self.sections = .init()
@@ -100,33 +41,18 @@ final class HomeViewModel: BaseViewModel {
                 
                 guard let self = self else { return }
                 
-                // Check for error
-                if let error: BaseError =  self.getErrorIfExist(
-                    from: [topRatedResult, popularResult, nowPlayingResult, upcomingResult]
-                ) {
-                    self.stateRelay.accept(.failed(error))
-                    self.alertItemRelay.accept(.init(message: error.message))
-                    return
-                }
-                
-                // Handle success
-                self.sections
-                    .onNext(
-                        [
-                            .init(items: [.init(movies: self.getMoviesListIfExist(from: topRatedResult), type: .topRated)]),
-                            
-                                .init(items: [.init(movies: self.getMoviesListIfExist(from: popularResult), type: .mostPopular)]),
-                            
-                                .init(items: [.init(movies: self.getMoviesListIfExist(from: nowPlayingResult), type: .nowPlaying)]),
-                            
-                                .init(items: [.init(movies: self.getMoviesListIfExist(from: upcomingResult), type: .upcoming)])
-                        ]
-                    )
-                self.stateRelay.accept(.successful)
-                self.sections.onCompleted()
+                self.handleOnCompleteFetchingMovies(
+                    using: topRatedResult,
+                    and: popularResult,
+                    and: nowPlayingResult,
+                    and: upcomingResult
+                )
+                //                self.sections.onCompleted()
             }.disposed(by: disposeBag)
     }
 }
+
+// MARK: - Private Methods
 
 private extension HomeViewModel {
     func fetchMovies(for type: APIConstants) -> Observable<Result<MoviesResponse, BaseError>> {
@@ -141,6 +67,37 @@ private extension HomeViewModel {
                 using: request,
                 responseType: MoviesResponse.self
             )
+    }
+    
+    func handleOnCompleteFetchingMovies(
+        using topRatedResult: Result<MoviesResponse, BaseError>,
+        and popularResult: Result<MoviesResponse, BaseError>,
+        and nowPlayingResult: Result<MoviesResponse, BaseError>,
+        and upcomingResult: Result<MoviesResponse, BaseError>
+    ) {
+        // Check for error
+        if let error: BaseError =  getErrorIfExist(
+            from: [topRatedResult, popularResult, nowPlayingResult, upcomingResult]
+        ) {
+            stateRelay.accept(.failed(error))
+            alertItemRelay.accept(.init(message: error.message))
+            return
+        }
+        
+        // Handle success
+        let topRatedMovies: [MovieData] = getMoviesListIfExist(from: topRatedResult)
+        let mostPopularMovies: [MovieData] = getMoviesListIfExist(from: popularResult)
+        let nowPlayingMovies: [MovieData] = getMoviesListIfExist(from: nowPlayingResult)
+        let upcomingMovies: [MovieData] = getMoviesListIfExist(from: upcomingResult)
+        sections
+            .onNext([
+                .init(items: [.init(movies: topRatedMovies, movieGroupType: .topRated)]),
+                .init(items: [.init(movies: mostPopularMovies, movieGroupType: .mostPopular)]),
+                .init(items: [.init(movies: nowPlayingMovies, movieGroupType: .nowPlaying)]),
+                .init(items: [.init(movies: upcomingMovies, movieGroupType: .upcoming)])
+            ])
+        
+        stateRelay.accept(.successful)
     }
     
     func getErrorIfExist(
