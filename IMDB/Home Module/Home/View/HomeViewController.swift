@@ -14,6 +14,11 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
     
     private var viewModel = HomeViewModel()
     weak var coordinator: TabbarCoordinator?
+    
+    private var sectionHeight: CGFloat {
+        let screenHeight = view.frame.height
+        return screenHeight / 3.5
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +51,7 @@ private extension HomeViewController {
     func createTableViewDataSource() -> TableViewdataSource<HomeSectionRowItem> {
         return TableViewdataSource<HomeSectionRowItem>(configureCell: { dataSource, tableView, indexPath, item -> UITableViewCell in
             
-            let cell: HomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-            
+            let cell: HomeTableViewCell = tableView.dequeue(at: indexPath)
             cell.collectionView.backgroundColor = UIColor.blue
             
             item.moviesSubject
@@ -55,8 +59,6 @@ private extension HomeViewController {
                 .disposed(by: self.disposeBag)
 
             return cell
-        }, titleForHeaderInSection: { dataSource, index in
-            return dataSource.sectionModels[index].items.first?.movieGroupType.title
         })
     }
 }
@@ -65,6 +67,16 @@ private extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return sectionHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = HomeTableViewHeader.fromNib()
+        headerView.titleLabel.text = "Featured Today"
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }

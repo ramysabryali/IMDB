@@ -41,12 +41,11 @@ private extension HomeTableViewCell {
         moviesSubject
             .asObservable()
             .bind(to: collectionView.rx.items(
-                cellIdentifier: "MovieCollectionViewCell",
+                cellIdentifier: MovieCollectionViewCell.classNameWithoutNamespaces,
                 cellType: MovieCollectionViewCell.self
             )
             ) { row, data, cell in
                 cell.titleLabel.text = data.title
-                cell.backgroundColor = UIColor.black
             }
             .disposed(by: disposeBag)
     }
@@ -54,10 +53,10 @@ private extension HomeTableViewCell {
 
 // MARK: - UICollectionViewDelegate
 
-extension HomeTableViewCell: UICollectionViewDelegate {
+extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width
-        let cellWidth = (width - 30) / 3 // compute your cell width
-        return CGSize(width: 50, height: bounds.height)
+        let width = collectionView.frame.width
+        let cellWidth = (width - 15) / 2.5
+        return CGSize(width: cellWidth, height: collectionView.frame.height)
     }
 }
