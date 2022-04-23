@@ -18,8 +18,57 @@
                 <rect key="frame" x="0.0" y="0.0" width="272" height="376"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gs-ob-Q86" userLabel="topView">
+                        <rect key="frame" x="0.0" y="0.0" width="272" height="60"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tma-lw-x05" userLabel="leadingIndicator">
+                                <rect key="frame" x="15" y="15" width="5" height="27"/>
+                                <color key="backgroundColor" name="YelloColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5" id="qDt-PN-BKe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1W9-cr-cMf">
+                                <rect key="frame" x="187" y="5" width="80" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="CTu-7N-awv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="See All">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="seeAllButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cAe-ha-hzY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fan Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niM-Gb-oVO">
+                                <rect key="frame" x="30" y="19.5" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" name="MainBlackColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="1yA-Zi-LKZ"/>
+                            <constraint firstItem="Tma-lw-x05" firstAttribute="top" secondItem="5Gs-ob-Q86" secondAttribute="top" constant="15" id="LiQ-CZ-409"/>
+                            <constraint firstItem="niM-Gb-oVO" firstAttribute="centerY" secondItem="5Gs-ob-Q86" secondAttribute="centerY" id="Ue9-TG-pLf"/>
+                            <constraint firstAttribute="trailing" secondItem="1W9-cr-cMf" secondAttribute="trailing" constant="5" id="WSI-oE-BRf"/>
+                            <constraint firstItem="niM-Gb-oVO" firstAttribute="leading" secondItem="Tma-lw-x05" secondAttribute="trailing" constant="10" id="YsG-zl-UcN"/>
+                            <constraint firstItem="1W9-cr-cMf" firstAttribute="leading" secondItem="niM-Gb-oVO" secondAttribute="trailing" constant="5" id="e0v-4q-aVG"/>
+                            <constraint firstAttribute="bottom" secondItem="Tma-lw-x05" secondAttribute="bottom" constant="18" id="gfK-Tg-W1R"/>
+                            <constraint firstItem="Tma-lw-x05" firstAttribute="leading" secondItem="5Gs-ob-Q86" secondAttribute="leading" constant="15" id="mxx-gB-eeB"/>
+                            <constraint firstAttribute="bottom" secondItem="1W9-cr-cMf" secondAttribute="bottom" constant="5" id="tsU-H1-Q5S"/>
+                            <constraint firstItem="1W9-cr-cMf" firstAttribute="top" secondItem="5Gs-ob-Q86" secondAttribute="top" constant="5" id="xek-R4-9cl"/>
+                        </constraints>
+                    </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ncf-7c-B7i">
-                        <rect key="frame" x="0.0" y="0.0" width="272" height="351"/>
+                        <rect key="frame" x="0.0" y="60" width="272" height="291"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RNX-Ag-hN4">
                             <size key="itemSize" width="128" height="128"/>
@@ -31,8 +80,11 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="ncf-7c-B7i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cXu-Dg-11X"/>
+                    <constraint firstItem="ncf-7c-B7i" firstAttribute="top" secondItem="5Gs-ob-Q86" secondAttribute="bottom" id="PFY-xw-cXq"/>
+                    <constraint firstAttribute="trailing" secondItem="5Gs-ob-Q86" secondAttribute="trailing" id="ZVy-JG-4Z7"/>
+                    <constraint firstItem="5Gs-ob-Q86" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="h2s-lZ-bQF"/>
                     <constraint firstItem="ncf-7c-B7i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="h3S-dy-LfQ"/>
+                    <constraint firstItem="5Gs-ob-Q86" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pij-ej-v6j"/>
                     <constraint firstAttribute="trailing" secondItem="ncf-7c-B7i" secondAttribute="trailing" id="q8u-Oh-0UI"/>
                     <constraint firstAttribute="bottom" secondItem="ncf-7c-B7i" secondAttribute="bottom" constant="25" id="qjz-hO-5UL"/>
                 </constraints>
@@ -41,13 +93,21 @@
             <color key="backgroundColor" name="HomeCellBackgroundColor"/>
             <connections>
                 <outlet property="collectionView" destination="ncf-7c-B7i" id="eOp-de-r2t"/>
+                <outlet property="seeAllButton" destination="1W9-cr-cMf" id="amH-Ya-fRA"/>
+                <outlet property="titleLabel" destination="niM-Gb-oVO" id="KD8-w9-PbS"/>
             </connections>
-            <point key="canvasLocation" x="97.101449275362327" y="241.07142857142856"/>
+            <point key="canvasLocation" x="296" y="241"/>
         </tableViewCell>
     </objects>
     <resources>
         <namedColor name="HomeCellBackgroundColor">
-            <color red="0.70738794261640925" green="0.71439178363241329" blue="0.71439178363241329" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.98399999999999999" green="0.98399999999999999" blue="0.98400986134403889" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="MainBlackColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YelloColor">
+            <color red="0.99900001287460327" green="0.98600000143051147" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

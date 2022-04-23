@@ -17,7 +17,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
     
     private var sectionHeight: CGFloat {
         let screenHeight = view.frame.height
-        return screenHeight / 2.5
+        return screenHeight / 2
     }
 
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
         setupTableView()
         viewModel.fetchAllMoviesData()
         navigationController?.isNavigationBarHidden = true
+        view.backgroundColor = UIColor.brown
     }
 }
 
@@ -56,6 +57,7 @@ private extension HomeViewController {
         return TableViewdataSource<HomeSectionRowItem>(configureCell: { dataSource, tableView, indexPath, item -> UITableViewCell in
             
             let cell: HomeTableViewCell = tableView.dequeue(at: indexPath)
+            cell.setTitle(to: item.movieGroupType.title)
             item.moviesSubject
                 .bind(to: cell.moviesSubject)
                 .disposed(by: self.disposeBag)
@@ -79,6 +81,6 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 65
     }
 }

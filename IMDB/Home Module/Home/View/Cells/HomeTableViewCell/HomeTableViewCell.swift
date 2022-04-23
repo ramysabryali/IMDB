@@ -10,6 +10,8 @@ import RxSwift
 import RxDataSources
 
 class HomeTableViewCell: UITableViewCell {
+    @IBOutlet weak var seeAllButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var disposeBag = DisposeBag()
@@ -18,6 +20,12 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
+    }
+    
+    @IBAction func seeAllButtonAction(_ sender: UIButton) {}
+    
+    func setTitle(to title: String?) {
+        titleLabel.text = title
     }
 }
 
