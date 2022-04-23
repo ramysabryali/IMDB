@@ -19,10 +19,6 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setupCollectionView()
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 }
 
 // MARK: - Private Methods
@@ -45,7 +41,7 @@ private extension HomeTableViewCell {
                 cellType: MovieCollectionViewCell.self
             )
             ) { row, data, cell in
-                cell.titleLabel.text = data.title
+                cell.loadCell(with: data.title, and: data.posterFullURL, and: data.voteAverage)
             }
             .disposed(by: disposeBag)
     }
@@ -58,5 +54,9 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDelegateF
         let width = collectionView.frame.width
         let cellWidth = (width - 15) / 2.5
         return CGSize(width: cellWidth, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
     }
 }

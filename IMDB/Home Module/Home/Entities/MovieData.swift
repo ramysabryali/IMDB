@@ -42,6 +42,7 @@ struct MovieData: Decodable {
 extension MovieData {
     var posterFullURL: String? {
         guard let posterPath: String = posterPath else { return nil }
-        return NetworkConstants.baseUrl + "/t/p/original/" + posterPath
+//        return NetworkConstants.baseUrl + "/t/p/original/" + posterPath
+        return "https://image.tmdb.org/t/p/w500" + posterPath
     }
 }

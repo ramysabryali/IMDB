@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIImage {
+    static let star = "star".uiImage
+    
     enum TabBar {
         static let home = "tabbar_home".uiImage
         static let search = "tabbar_search".uiImage

@@ -26,6 +26,7 @@ final class RegistrationCoordinator: Coordinator {
 extension RegistrationCoordinator {
     func presentHomeModule() {
         let homeNavigationController = UINavigationController()
+        homeNavigationController.isNavigationBarHidden = true
         let homeCoordinator = TabbarCoordinator(homeNavigationController)
         childCoordinators.append(homeCoordinator)
 

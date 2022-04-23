@@ -14,6 +14,13 @@ extension UIColor {
         static let yelloColor = "YelloColor".uiColor
         static let mainBlackColor = "MainBlackColor".uiColor
         static let constantBlackColor = "ConstantBlackColor".uiColor
+        static let mainGrey = "MainGrey".uiColor
+    }
+    
+    enum HomeView {
+        static let homeCellBackgroundColor = "HomeCellBackgroundColor".uiColor
+        static let movieCellBackgroundColor = "MovieCellBackgroundColor".uiColor
+        static let homeHeaderBackgroundColor = "HomeHeaderBackgroundColor".uiColor
     }
 }
 

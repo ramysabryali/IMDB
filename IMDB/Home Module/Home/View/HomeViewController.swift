@@ -17,7 +17,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
     
     private var sectionHeight: CGFloat {
         let screenHeight = view.frame.height
-        return screenHeight / 3.5
+        return screenHeight / 2.5
     }
 
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
         bindLoadingIndicator(to: viewModel.stateRelay)
         setupTableView()
         viewModel.fetchAllMoviesData()
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -35,6 +36,9 @@ private extension HomeViewController {
     
     func setupTableView() {
         tableView.registerCellNib(HomeTableViewCell.self)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0.0
+        }
         
         tableView
             .rx
@@ -52,8 +56,6 @@ private extension HomeViewController {
         return TableViewdataSource<HomeSectionRowItem>(configureCell: { dataSource, tableView, indexPath, item -> UITableViewCell in
             
             let cell: HomeTableViewCell = tableView.dequeue(at: indexPath)
-            cell.collectionView.backgroundColor = UIColor.blue
-            
             item.moviesSubject
                 .bind(to: cell.moviesSubject)
                 .disposed(by: self.disposeBag)
