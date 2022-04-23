@@ -13,13 +13,9 @@ final class CredentialManager {
     private init() {}
 }
 
-extension CredentialManager {
-    var userName: String? {
-        return fetchItem(for: .username)
-    }
-}
+// MARK: - CredentialsProtocol
 
-extension CredentialManager {
+extension CredentialManager: CredentialsProtocol {
     func delete(service: KeychainKey) {
         do {
             try KeychainManager.shared.delete(service: service.value)
@@ -30,10 +26,16 @@ extension CredentialManager {
         }
     }
     
-    func set(userName: String) {
-        saveItem(data: userName, service: .username)
+    func set(value: String, for key: KeychainKey) {
+        saveItem(data: value, service: key)
+    }
+    
+    func getValue(for key: KeychainKey) -> String? {
+        return fetchItem(for: key)
     }
 }
+
+// MARK: - Implementation
 
 private extension CredentialManager {
     func fetchItem(for service: KeychainKey) -> String? {

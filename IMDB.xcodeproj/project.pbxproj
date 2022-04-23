@@ -105,6 +105,7 @@
 		DCCC7DF12814792200AB8885 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF02814792200AB8885 /* ImageSize.swift */; };
 		DCCC7DF42814AD0C00AB8885 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */; };
 		DCCC7DF72814BDCB00AB8885 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */; };
+		DCCC7DF92814C3DC00AB8885 /* CredentialsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF82814C3DC00AB8885 /* CredentialsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +211,7 @@
 		DCCC7DF02814792200AB8885 /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
 		DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
+		DCCC7DF82814C3DC00AB8885 /* CredentialsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,6 +567,7 @@
 		DC650C7D27FDC55400D11F84 /* Credentials */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7DF82814C3DC00AB8885 /* CredentialsProtocol.swift */,
 				DC650C7E27FDC55400D11F84 /* CredentialManager.swift */,
 			);
 			path = Credentials;
@@ -1194,6 +1197,7 @@
 				DC2A8C342805022E002D86AA /* VideosViewController.swift in Sources */,
 				DC650CC827FDC55400D11F84 /* String+Helpers.swift in Sources */,
 				DC2A8C3B280504CB002D86AA /* KeychainManager.swift in Sources */,
+				DCCC7DF92814C3DC00AB8885 /* CredentialsProtocol.swift in Sources */,
 				DC46CCCE2812390500ED414B /* MovieGroupType.swift in Sources */,
 				DCA51EC02803A2E000B2E4D9 /* HomeViewModel.swift in Sources */,
 				DC650CB627FDC55400D11F84 /* ErrorType.swift in Sources */,

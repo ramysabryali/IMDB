@@ -41,7 +41,7 @@ final class TabbarCoordinator: NSObject, TabbarCoordinatorProtocol {
 
 private extension TabbarCoordinator {
     var isUserLoggedIn: Bool {
-        return credentialManager.userName.isNotNil
+        return credentialManager.getValue(for: .username).isNotNil
     }
 }
 
