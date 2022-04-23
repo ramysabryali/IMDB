@@ -10,10 +10,15 @@ import RxSwift
 final class HomeViewModel: BaseViewModel {
     private let apiService: APIServiceContract
     private(set) var sections: PublishSubject<[HomeSectionRowItem]>
+    private var maxMoviesNumberPerSection: Int?
     //    private let pageSize: Int = Constants.pageSize
     //    private var page: Int = 1
     
-    init(apiService: APIServiceContract = APIService.shared) {
+    init(
+        maxMoviesNumberPerSection: Int? = 8,
+        apiService: APIServiceContract = APIService.shared
+    ) {
+        self.maxMoviesNumberPerSection = maxMoviesNumberPerSection
         self.apiService = apiService
         self.sections = .init()
         super.init()
@@ -117,11 +122,19 @@ private extension HomeViewModel {
     ) -> [MovieData] {
         guard
             case let .success(moviesResponse) = response,
-            let movies: [MovieData] = moviesResponse.results
+            var movies: [MovieData] = moviesResponse.results
         else {
             return []
         }
         
-        return movies
+        return getMaxNumber(of: &movies)
+    }
+    
+    func getMaxNumber(of movies: inout [MovieData]) -> [MovieData] {
+        guard let maxMoviesNumberPerSection = maxMoviesNumberPerSection else {
+            return movies
+        }
+        
+        return Array(movies.prefix(maxMoviesNumberPerSection))
     }
 }
