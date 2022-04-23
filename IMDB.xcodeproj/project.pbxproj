@@ -94,6 +94,14 @@
 		DCCC7DD52808EECE00AB8885 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DD32808EECE00AB8885 /* HomeTableViewCell.swift */; };
 		DCCC7DD62808EECE00AB8885 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DD42808EECE00AB8885 /* HomeTableViewCell.xib */; };
 		DCCC7DD92810AC1500AB8885 /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DD82810AC1500AB8885 /* UITableView+Helpers.swift */; };
+		DCCC7DDD2814543500AB8885 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DDB2814543500AB8885 /* SplashViewController.swift */; };
+		DCCC7DDE2814543500AB8885 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DDC2814543500AB8885 /* SplashViewController.xib */; };
+		DCCC7DE22814545B00AB8885 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DE12814545B00AB8885 /* SplashViewModel.swift */; };
+		DCCC7DE5281458E100AB8885 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DE4281458E100AB8885 /* SplashCoordinator.swift */; };
+		DCCC7DE828145B7600AB8885 /* LoadConfigurationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DE728145B7600AB8885 /* LoadConfigurationsResponse.swift */; };
+		DCCC7DEA28145C2F00AB8885 /* ImagesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DE928145C2F00AB8885 /* ImagesConfiguration.swift */; };
+		DCCC7DED28145CF900AB8885 /* AppConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DEC28145CF900AB8885 /* AppConfigurationsManager.swift */; };
+		DCCC7DEF28145F1F00AB8885 /* AppConfigurationsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DEE28145F1F00AB8885 /* AppConfigurationsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +196,14 @@
 		DCCC7DD32808EECE00AB8885 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		DCCC7DD42808EECE00AB8885 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		DCCC7DD82810AC1500AB8885 /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
+		DCCC7DDB2814543500AB8885 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		DCCC7DDC2814543500AB8885 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		DCCC7DE12814545B00AB8885 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		DCCC7DE4281458E100AB8885 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		DCCC7DE728145B7600AB8885 /* LoadConfigurationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadConfigurationsResponse.swift; sourceTree = "<group>"; };
+		DCCC7DE928145C2F00AB8885 /* ImagesConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesConfiguration.swift; sourceTree = "<group>"; };
+		DCCC7DEC28145CF900AB8885 /* AppConfigurationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationsManager.swift; sourceTree = "<group>"; };
+		DCCC7DEE28145F1F00AB8885 /* AppConfigurationsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +424,7 @@
 		DC650C4B27FDBDD100D11F84 /* IMDB */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7DDA2814541900AB8885 /* Splash */,
 				DC2A8C1B2804AC02002D86AA /* Registration Module */,
 				DC7797662801E41B003B545F /* Home Module */,
 				DC2A8C452805069A002D86AA /* Profile Module */,
@@ -486,6 +503,7 @@
 		DC650C7127FDC55400D11F84 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7DEB28145CE300AB8885 /* Configurations */,
 				DC2A8C39280504B0002D86AA /* KeyChain */,
 				DC650C7227FDC55400D11F84 /* Environment */,
 				DC650C7427FDC55400D11F84 /* Error */,
@@ -923,6 +941,60 @@
 			path = UITableView;
 			sourceTree = "<group>";
 		};
+		DCCC7DDA2814541900AB8885 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DE628145B5E00AB8885 /* Entities */,
+				DCCC7DE3281458C200AB8885 /* Navigation */,
+				DCCC7DE02814544600AB8885 /* ViewModel */,
+				DCCC7DDF2814543D00AB8885 /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		DCCC7DDF2814543D00AB8885 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DDB2814543500AB8885 /* SplashViewController.swift */,
+				DCCC7DDC2814543500AB8885 /* SplashViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DCCC7DE02814544600AB8885 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DE12814545B00AB8885 /* SplashViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DCCC7DE3281458C200AB8885 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DE4281458E100AB8885 /* SplashCoordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		DCCC7DE628145B5E00AB8885 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DE728145B7600AB8885 /* LoadConfigurationsResponse.swift */,
+				DCCC7DE928145C2F00AB8885 /* ImagesConfiguration.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		DCCC7DEB28145CE300AB8885 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DEE28145F1F00AB8885 /* AppConfigurationsProtocol.swift */,
+				DCCC7DEC28145CF900AB8885 /* AppConfigurationsManager.swift */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -990,6 +1062,7 @@
 				DC2A8C352805022E002D86AA /* VideosViewController.xib in Resources */,
 				DC2A8C4B280506BC002D86AA /* ProfileViewController.xib in Resources */,
 				DC650C5627FDBDD300D11F84 /* Assets.xcassets in Resources */,
+				DCCC7DDE2814543500AB8885 /* SplashViewController.xib in Resources */,
 				DC77976C2801E44C003B545F /* LoginViewController.xib in Resources */,
 				DC2A8C2F2804FE6A002D86AA /* Colors.xcassets in Resources */,
 				DCA51EBE2803A2CF00B2E4D9 /* HomeViewController.xib in Resources */,
@@ -1072,13 +1145,16 @@
 				DC9DD30D28065BF10050FA84 /* ProgressHUDAnimatedIcon.swift in Sources */,
 				DC9DD30928065AB80050FA84 /* ProgressHUD.swift in Sources */,
 				DC650CBB27FDC55400D11F84 /* ViewModelState.swift in Sources */,
+				DCCC7DED28145CF900AB8885 /* AppConfigurationsManager.swift in Sources */,
 				DC650CBA27FDC55400D11F84 /* BaseViewModel.swift in Sources */,
+				DCCC7DE5281458E100AB8885 /* SplashCoordinator.swift in Sources */,
 				DC2A8C4A280506BC002D86AA /* ProfileViewController.swift in Sources */,
 				DC650CA627FDC55400D11F84 /* NetworkMethods.swift in Sources */,
 				DC2A8C382805025A002D86AA /* VideosViewModel.swift in Sources */,
 				DC650CBC27FDC55400D11F84 /* DisposeObject.swift in Sources */,
 				DC2A8C4D28051928002D86AA /* CoordinatorDelegate.swift in Sources */,
 				DC46CCD5281249A800ED414B /* HomeTableViewHeader.swift in Sources */,
+				DCCC7DE828145B7600AB8885 /* LoadConfigurationsResponse.swift in Sources */,
 				DC46CCD22812393200ED414B /* HomeSectionRowData.swift in Sources */,
 				DC650CC427FDC55400D11F84 /* UICollectionView+Helpers.swift in Sources */,
 				DC650CA827FDC55400D11F84 /* NetworkContentType.swift in Sources */,
@@ -1094,6 +1170,7 @@
 				DC46CCCE2812390500ED414B /* MovieGroupType.swift in Sources */,
 				DCA51EC02803A2E000B2E4D9 /* HomeViewModel.swift in Sources */,
 				DC650CB627FDC55400D11F84 /* ErrorType.swift in Sources */,
+				DCCC7DEA28145C2F00AB8885 /* ImagesConfiguration.swift in Sources */,
 				DC650CAA27FDC55400D11F84 /* APIServiceContract.swift in Sources */,
 				DC650CB127FDC55400D11F84 /* EnvironmentManager.swift in Sources */,
 				DC650CC927FDC55400D11F84 /* NSObject+Helpers.swift in Sources */,
@@ -1102,9 +1179,11 @@
 				DC2A8C3F280504E4002D86AA /* KeychainKey.swift in Sources */,
 				DC650CAF27FDC55400D11F84 /* ErrorConstants.swift in Sources */,
 				DC2A8C4128050539002D86AA /* KeychainConstants.swift in Sources */,
+				DCCC7DEF28145F1F00AB8885 /* AppConfigurationsProtocol.swift in Sources */,
 				DC650CA727FDC55400D11F84 /* NetworkHeaders.swift in Sources */,
 				DC9DD30B28065BDC0050FA84 /* ProgressHUDAnimationType.swift in Sources */,
 				DC650CAE27FDC55400D11F84 /* APIConstants.swift in Sources */,
+				DCCC7DE22814545B00AB8885 /* SplashViewModel.swift in Sources */,
 				DCCC7DD12808EEAB00AB8885 /* MovieCollectionViewCell.swift in Sources */,
 				DC650CAB27FDC55400D11F84 /* APIService.swift in Sources */,
 				DC2A8C5D2805F4D0002D86AA /* MovieData.swift in Sources */,
@@ -1117,6 +1196,7 @@
 				DCA51EBD2803A2CF00B2E4D9 /* HomeViewController.swift in Sources */,
 				DC650CB327FDC55400D11F84 /* ErrorResolver.swift in Sources */,
 				DCCC7DD92810AC1500AB8885 /* UITableView+Helpers.swift in Sources */,
+				DCCC7DDD2814543500AB8885 /* SplashViewController.swift in Sources */,
 				DC650CAC27FDC55400D11F84 /* APIBuilder.swift in Sources */,
 				DC650CB227FDC55400D11F84 /* BaseError.swift in Sources */,
 				DC2A8C3D280504DA002D86AA /* KeychainError.swift in Sources */,
