@@ -103,6 +103,8 @@
 		DCCC7DED28145CF900AB8885 /* AppConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DEC28145CF900AB8885 /* AppConfigurationsManager.swift */; };
 		DCCC7DEF28145F1F00AB8885 /* AppConfigurationsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DEE28145F1F00AB8885 /* AppConfigurationsProtocol.swift */; };
 		DCCC7DF12814792200AB8885 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF02814792200AB8885 /* ImageSize.swift */; };
+		DCCC7DF42814AD0C00AB8885 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */; };
+		DCCC7DF72814BDCB00AB8885 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +208,8 @@
 		DCCC7DEC28145CF900AB8885 /* AppConfigurationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationsManager.swift; sourceTree = "<group>"; };
 		DCCC7DEE28145F1F00AB8885 /* AppConfigurationsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationsProtocol.swift; sourceTree = "<group>"; };
 		DCCC7DF02814792200AB8885 /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
+		DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -650,6 +654,8 @@
 		DC650C9027FDC55400D11F84 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7DF52814BDC000AB8885 /* TextField */,
+				DCCC7DF22814ACD800AB8885 /* Buttons */,
 				DC650C9127FDC55400D11F84 /* Image View */,
 			);
 			path = Controls;
@@ -998,6 +1004,22 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		DCCC7DF22814ACD800AB8885 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		DCCC7DF52814BDC000AB8885 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1132,6 +1154,7 @@
 				DC77976B2801E44C003B545F /* LoginViewController.swift in Sources */,
 				DC2A8C582805BC89002D86AA /* Images+Assets.swift in Sources */,
 				DC650CC527FDC55400D11F84 /* Optional+Helpers.swift in Sources */,
+				DCCC7DF42814AD0C00AB8885 /* BaseButton.swift in Sources */,
 				DC2A8C5B2805F4C1002D86AA /* MoviesResponse.swift in Sources */,
 				DC650CAD27FDC55400D11F84 /* Constants.swift in Sources */,
 				DC650CC227FDC55400D11F84 /* UIApplication+UIHelpers.swift in Sources */,
@@ -1183,6 +1206,7 @@
 				DC2A8C3F280504E4002D86AA /* KeychainKey.swift in Sources */,
 				DC650CAF27FDC55400D11F84 /* ErrorConstants.swift in Sources */,
 				DC2A8C4128050539002D86AA /* KeychainConstants.swift in Sources */,
+				DCCC7DF72814BDCB00AB8885 /* BaseTextField.swift in Sources */,
 				DCCC7DEF28145F1F00AB8885 /* AppConfigurationsProtocol.swift in Sources */,
 				DC650CA727FDC55400D11F84 /* NetworkHeaders.swift in Sources */,
 				DC9DD30B28065BDC0050FA84 /* ProgressHUDAnimationType.swift in Sources */,

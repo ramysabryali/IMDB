@@ -22,6 +22,19 @@ extension UIColor {
         static let movieCellBackgroundColor = "MovieCellBackgroundColor".uiColor
         static let homeHeaderBackgroundColor = "HomeHeaderBackgroundColor".uiColor
     }
+    
+    enum Controls {
+        enum BaseButton {
+            static let secondaryButtonColor = "SecondaryButtonColor".uiColor
+            static let SecondaryButtonBorderColor = "SecondaryButtonBorderColor".uiColor
+            static let SecondaryButtonTitleColor = "SecondaryButtonTitleColor".uiColor
+        }
+        
+        enum BaseTextfield {
+            static let textfieldBackgroundColor = "TextfieldBackgroundColor".uiColor
+            static let textfieldPlaceHolderColor = "TextfieldPlaceHolderColor".uiColor
+        }
+    }
 }
 
 private extension String {

@@ -7,17 +7,33 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController {
-
+class LoginViewController: BaseViewController, LoadingDisplayerProtocol {
+    
+    @IBOutlet weak var createNewAccountButton: BaseButton!
+    @IBOutlet weak var signInButton: BaseButton!
+    @IBOutlet weak var forgetPasswordButton: UIButton!
+    @IBOutlet weak var passwordTextfield: BaseTextField!
+    @IBOutlet weak var emailTextfield: BaseTextField!
+    
     private var viewModel = LoginViewModel()
     weak var coordinator: RegistrationCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindLoadingIndicator(to: viewModel.stateRelay)
+        setButtonsStyle()
     }
     
-    @IBAction func loginButtonAction(sender: UIButton) {
-        CredentialManager.shared.set(userName: "Ramy Sabry")
-        coordinator?.finish()
+//    @IBAction func loginButtonAction(sender: UIButton) {
+//        CredentialManager.shared.set(userName: "Ramy Sabry")
+//        coordinator?.finish()
+//    }
+}
+
+// MARK: - Private Methods
+
+private extension LoginViewController {
+    func setButtonsStyle() {
+        createNewAccountButton.customStyle = .seconday
     }
 }

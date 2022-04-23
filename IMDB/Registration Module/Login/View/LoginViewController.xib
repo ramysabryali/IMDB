@@ -12,6 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="IMDB" customModuleProvider="target">
             <connections>
+                <outlet property="createNewAccountButton" destination="pmb-uo-PcE" id="ZRH-1Q-wf6"/>
+                <outlet property="emailTextfield" destination="z8z-mI-nmR" id="Rfb-7h-RbY"/>
+                <outlet property="forgetPasswordButton" destination="XHj-OW-z1O" id="mAl-Dt-dNi"/>
+                <outlet property="passwordTextfield" destination="VgP-DD-Yly" id="W5r-8m-5FO"/>
+                <outlet property="signInButton" destination="wvA-s6-hc1" id="6b0-pL-ndg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,39 +25,107 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvA-s6-hc1">
-                    <rect key="frame" x="20" y="802" width="374" height="40"/>
-                    <color key="backgroundColor" name="YelloColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="4Tm-1r-yzY"/>
-                    </constraints>
-                    <color key="tintColor" name="ConstantBlackColor"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Login"/>
-                    <connections>
-                        <action selector="loginButtonActionWithSender:" destination="-1" eventType="touchUpInside" id="4Mj-aj-iik"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ap-0u-Aaw">
-                    <rect key="frame" x="20" y="64" width="374" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign-In" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ap-0u-Aaw">
+                    <rect key="frame" x="20" y="64" width="374" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                     <color key="textColor" name="MainBlackColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ipj-pD-Obl">
+                    <rect key="frame" x="20" y="160.5" width="374" height="245"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHj-OW-z1O">
+                            <rect key="frame" x="214" y="0.0" width="160" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="160" id="0cn-5Z-VSr"/>
+                                <constraint firstAttribute="height" constant="35" id="6TX-O1-fZq"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Forgot password?">
+                                <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                            </buttonConfiguration>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8z-mI-nmR" customClass="BaseTextField" customModule="IMDB" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="374" height="45"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="fRM-el-UDe"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pawword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VgP-DD-Yly" customClass="BaseTextField" customModule="IMDB" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="110" width="374" height="45"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="jXI-n1-c0S"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jWy-c9-pyZ">
+                            <rect key="frame" x="0.0" y="170" width="374" height="10"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="HvV-0a-by1"/>
+                            </constraints>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvA-s6-hc1" customClass="BaseButton" customModule="IMDB" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="195" width="374" height="50"/>
+                            <color key="backgroundColor" name="YelloColor"/>
+                            <color key="tintColor" name="ConstantBlackColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="jWy-c9-pyZ" firstAttribute="leading" secondItem="Ipj-pD-Obl" secondAttribute="leading" id="P53-sN-hck"/>
+                        <constraint firstAttribute="trailing" secondItem="wvA-s6-hc1" secondAttribute="trailing" id="Xvc-ha-eCA"/>
+                        <constraint firstItem="z8z-mI-nmR" firstAttribute="leading" secondItem="Ipj-pD-Obl" secondAttribute="leading" id="aQU-Xm-V1P"/>
+                        <constraint firstItem="wvA-s6-hc1" firstAttribute="leading" secondItem="Ipj-pD-Obl" secondAttribute="leading" id="evY-xj-Ud1"/>
+                        <constraint firstAttribute="trailing" secondItem="jWy-c9-pyZ" secondAttribute="trailing" id="fQx-Ty-Ezh"/>
+                        <constraint firstAttribute="trailing" secondItem="VgP-DD-Yly" secondAttribute="trailing" id="th0-Ur-JYI"/>
+                        <constraint firstItem="VgP-DD-Yly" firstAttribute="leading" secondItem="Ipj-pD-Obl" secondAttribute="leading" id="yKc-W5-uHC"/>
+                        <constraint firstAttribute="trailing" secondItem="z8z-mI-nmR" secondAttribute="trailing" id="zHw-Lp-I2T"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmb-uo-PcE" customClass="BaseButton" customModule="IMDB" customModuleProvider="target">
+                    <rect key="frame" x="20" y="787" width="374" height="50"/>
+                    <color key="backgroundColor" name="YelloColor"/>
+                    <color key="tintColor" name="ConstantBlackColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Create new account"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="1ap-0u-Aaw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Ab8-21-bRN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wvA-s6-hc1" secondAttribute="trailing" constant="20" id="BAN-Mb-Etl"/>
+                <constraint firstItem="pmb-uo-PcE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="BW5-Di-7f1"/>
                 <constraint firstItem="1ap-0u-Aaw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GIh-Gb-A10"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wvA-s6-hc1" secondAttribute="bottom" constant="20" id="Q0W-yu-Vld"/>
+                <constraint firstItem="Ipj-pD-Obl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="1: 1.6" id="JBl-4d-4Y8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pmb-uo-PcE" secondAttribute="bottom" constant="25" id="hIA-do-vpA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1ap-0u-Aaw" secondAttribute="trailing" constant="20" id="krS-GQ-khS"/>
-                <constraint firstItem="wvA-s6-hc1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="l4n-yI-vEB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pmb-uo-PcE" secondAttribute="trailing" constant="20" id="lPo-IW-krF"/>
+                <constraint firstItem="Ipj-pD-Obl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="q5Z-6R-OCz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ipj-pD-Obl" secondAttribute="trailing" constant="20" id="t5f-II-zhX"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
         </view>
     </objects>
+    <designables>
+        <designable name="VgP-DD-Yly">
+            <size key="intrinsicContentSize" width="102.5" height="34"/>
+        </designable>
+        <designable name="pmb-uo-PcE">
+            <size key="intrinsicContentSize" width="153.5" height="31"/>
+        </designable>
+        <designable name="wvA-s6-hc1">
+            <size key="intrinsicContentSize" width="59.5" height="31"/>
+        </designable>
+        <designable name="z8z-mI-nmR">
+            <size key="intrinsicContentSize" width="78.5" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="ConstantBlackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,7 +134,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YelloColor">
-            <color red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93333333333333335" green="0.77647058823529413" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
