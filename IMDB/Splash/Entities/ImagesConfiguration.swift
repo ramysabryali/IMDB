@@ -10,11 +10,11 @@ import Foundation
 struct ImagesConfiguration: Decodable {
     let baseURL: String?
     let secureBaseURL: String?
-    let backdropSizes: [String]?
-    let logoSizes: [String]?
-    let posterSizes: [String]?
-    let profileSizes: [String]?
-    let stillSizes: [String]?
+    let backdropSizes: [ImageSize]?
+    let logoSizes: [ImageSize]?
+    let posterSizes: [ImageSize]?
+    let profileSizes: [ImageSize]?
+    let stillSizes: [ImageSize]?
 
     enum CodingKeys: String, CodingKey {
         case baseURL = "base_url"

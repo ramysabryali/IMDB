@@ -17,7 +17,7 @@ class AppConfigurationsManager: AppConfigurationsProtocol {
 
 extension AppConfigurationsManager {
     var imageBaseUrl: String {
-        return (imagesConfigurations?.baseURL).value
+        return (imagesConfigurations?.secureBaseURL).value
     }
 }
 
