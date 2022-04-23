@@ -70,6 +70,7 @@ private extension TabbarCoordinator {
         
         /// In this step, we attach tabBarController to navigation controller associated with this coordanator
         navigationController.setViewControllers([tabbarController], animated: false)
+        navigationController.isNavigationBarHidden = true
     }
     
     func getTabController(_ itemView: TabbarItemView) -> UINavigationController {

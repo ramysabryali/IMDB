@@ -25,8 +25,6 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
         bindLoadingIndicator(to: viewModel.stateRelay)
         setupTableView()
         viewModel.fetchAllMoviesData()
-        navigationController?.isNavigationBarHidden = true
-        view.backgroundColor = UIColor.brown
     }
 }
 
