@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
         super.viewDidLoad()
         bindLoadingIndicator(to: viewModel.stateRelay)
         setupTableView()
-        viewModel.fetchAllMoviesData()
+        viewModel.fetchWhatToWatchMovies()
     }
 }
 
@@ -74,7 +74,8 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = HomeTableViewHeader.fromNib()
-        headerView.titleLabel.text = "Featured Today"
+        let title: String = viewModel.getTitle(for: section)
+        headerView.titleLabel.text = title
         return headerView
     }
     

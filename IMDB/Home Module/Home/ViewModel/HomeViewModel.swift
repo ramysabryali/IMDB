@@ -9,7 +9,7 @@ import RxSwift
 
 final class HomeViewModel: BaseViewModel {
     private let apiService: APIServiceContract
-    private(set) var sections: PublishSubject<[HomeSectionRowItem]>
+    private(set) var sections: BehaviorSubject<[HomeSectionRowItem]>
     private var maxMoviesNumberPerSection: Int?
     //    private let pageSize: Int = Constants.pageSize
     //    private var page: Int = 1
@@ -20,11 +20,15 @@ final class HomeViewModel: BaseViewModel {
     ) {
         self.maxMoviesNumberPerSection = maxMoviesNumberPerSection
         self.apiService = apiService
-        self.sections = .init()
+        self.sections = .init(value: [])
         super.init()
     }
-    
-    func fetchAllMoviesData() {
+}
+
+// MARK: - Input Methods
+
+extension HomeViewModel {
+    func fetchWhatToWatchMovies() {
         stateRelay.accept(.loading)
         
         let topRatedMoviesObservable = fetchMovies(for: .topRated)
@@ -54,6 +58,21 @@ final class HomeViewModel: BaseViewModel {
                 )
                 //                self.sections.onCompleted()
             }.disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Output Methods
+
+extension HomeViewModel {
+    func getTitle(for section: Int) -> String {
+        guard
+            let sectionRowItem = try? sections.value()[safe: section],
+            let sectionTitle = sectionRowItem.items.first?.sectionType.title
+        else {
+            return ""
+        }
+        
+        return sectionTitle
     }
 }
 
@@ -94,13 +113,15 @@ private extension HomeViewModel {
         let mostPopularMovies: [MovieData] = getMoviesListIfExist(from: popularResult)
         let nowPlayingMovies: [MovieData] = getMoviesListIfExist(from: nowPlayingResult)
         let upcomingMovies: [MovieData] = getMoviesListIfExist(from: upcomingResult)
-        sections
-            .onNext([
-                .init(items: [.init(movies: topRatedMovies, movieGroupType: .topRated)]),
-                .init(items: [.init(movies: mostPopularMovies, movieGroupType: .mostPopular)]),
-                .init(items: [.init(movies: nowPlayingMovies, movieGroupType: .nowPlaying)]),
-                .init(items: [.init(movies: upcomingMovies, movieGroupType: .upcoming)])
-            ])
+        
+        let sectionItems: [HomeSectionRowData] = [
+            .init(movies: topRatedMovies, movieGroupType: .topRated, sectionType: .whatToWatch),
+            .init(movies: mostPopularMovies, movieGroupType: .mostPopular, sectionType: .whatToWatch),
+            .init(movies: nowPlayingMovies, movieGroupType: .nowPlaying, sectionType: .whatToWatch),
+            .init(movies: upcomingMovies, movieGroupType: .upcoming, sectionType: .whatToWatch)
+        ]
+        
+        sections.onNext([ .init(items: sectionItems) ])
         
         stateRelay.accept(.successful)
     }
