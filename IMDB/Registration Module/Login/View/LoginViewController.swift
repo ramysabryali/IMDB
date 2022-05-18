@@ -24,10 +24,11 @@ class LoginViewController: BaseViewController, LoadingDisplayerProtocol {
         setButtonsStyle()
     }
     
-//    @IBAction func loginButtonAction(sender: UIButton) {
-//        CredentialManager.shared.set(userName: "Ramy Sabry")
-//        coordinator?.finish()
-//    }
+    @IBAction func loginButtonAction(sender: UIButton) {
+        // TODO: - To be removed
+        CredentialManager.shared.set(value: "Ramy Sabry", for: .username)
+        coordinator?.finish()
+    }
 }
 
 // MARK: - Private Methods
