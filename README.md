@@ -3,9 +3,11 @@
 
 A simple UIKit app displays latest movies using TheMoviesDB API
 
+https://user-images.githubusercontent.com/17670361/176746280-c1f3d2a8-23ca-4ce6-83bf-5ae25638c047.mov
+
 <br />
 
-    
+
 ## Consist Of
 - Login Screen
 - Movies List Screen
