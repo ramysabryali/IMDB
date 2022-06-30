@@ -22,20 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="274" height="355"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BUF-e2-4kL">
-                                <rect key="frame" x="12" y="304" width="250" height="39"/>
+                                <rect key="frame" x="12" y="303" width="250" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jsl-vG-wwj">
-                                        <rect key="frame" x="0.0" y="0.0" width="42.5" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="42.5" height="18"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="1WG-dM-ZvU">
-                                                <rect key="frame" x="0.0" y="1.5" width="14" height="14"/>
+                                                <rect key="frame" x="0.0" y="2" width="14" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="0iA-ku-Lcy"/>
                                                     <constraint firstAttribute="width" constant="14" id="ahA-dZ-Vlj"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qay-EJ-PvM">
-                                                <rect key="frame" x="22" y="0.0" width="20.5" height="17"/>
+                                                <rect key="frame" x="22" y="0.5" width="20.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="MainGrey"/>
                                                 <nil key="highlightedColor"/>
@@ -43,15 +43,18 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moon Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyM-5p-kbs">
-                                        <rect key="frame" x="0.0" y="22" width="75.5" height="17"/>
+                                        <rect key="frame" x="0.0" y="23" width="75.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="MainBlackColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dc3-I7-2Mu"/>
+                                </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaa-bv-Wr9" customClass="AsyncImageView" customModule="IMDB" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="274" height="292"/>
+                                <rect key="frame" x="0.0" y="0.0" width="274" height="291"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="MovieCellBackgroundColor"/>
@@ -91,10 +94,10 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainGrey">
-            <color red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.59600001573562622" green="0.59600001573562622" blue="0.59600001573562622" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="MovieCellBackgroundColor">
-            <color red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
