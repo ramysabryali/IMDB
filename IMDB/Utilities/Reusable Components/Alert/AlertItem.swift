@@ -18,7 +18,7 @@ struct AlertItem: Identifiable {
         title: String? = nil,
         message: String?,
         style: UIAlertController.Style = .alert,
-        actions: [AlertAction] = []
+        actions: [AlertAction] = [.init(title: "OK", action: nil)]
     ) {
         self.title = title
         self.message = message

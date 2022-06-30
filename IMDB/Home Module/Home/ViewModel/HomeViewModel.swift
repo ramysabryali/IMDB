@@ -56,7 +56,6 @@ extension HomeViewModel {
                     and: nowPlayingResult,
                     and: upcomingResult
                 )
-                //                self.sections.onCompleted()
             }.disposed(by: disposeBag)
     }
 }

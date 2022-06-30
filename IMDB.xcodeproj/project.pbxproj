@@ -106,6 +106,7 @@
 		DCCC7DF42814AD0C00AB8885 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */; };
 		DCCC7DF72814BDCB00AB8885 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */; };
 		DCCC7DF92814C3DC00AB8885 /* CredentialsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF82814C3DC00AB8885 /* CredentialsProtocol.swift */; };
+		DCCC7DFC281C712600AB8885 /* AlertDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DFB281C712500AB8885 /* AlertDisplayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		DCCC7DF32814AD0C00AB8885 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		DCCC7DF62814BDCB00AB8885 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		DCCC7DF82814C3DC00AB8885 /* CredentialsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProtocol.swift; sourceTree = "<group>"; };
+		DCCC7DFB281C712500AB8885 /* AlertDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -846,6 +848,7 @@
 		DC9DD30728065A8C0050FA84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7DFA281C711600AB8885 /* Alert View */,
 				DC9DD30628065A730050FA84 /* Loading Indicator */,
 			);
 			path = Views;
@@ -1023,6 +1026,14 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
+		DCCC7DFA281C711600AB8885 /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DFB281C712500AB8885 /* AlertDisplayer.swift */,
+			);
+			path = "Alert View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1192,6 +1203,7 @@
 				DC2A8C292804F5FB002D86AA /* MoviesSearchViewModel.swift in Sources */,
 				DC9DD31128065DB00050FA84 /* ProgressView.swift in Sources */,
 				DC650C4D27FDBDD100D11F84 /* AppDelegate.swift in Sources */,
+				DCCC7DFC281C712600AB8885 /* AlertDisplayer.swift in Sources */,
 				DC650CBF27FDC55400D11F84 /* AlertItem.swift in Sources */,
 				DC650CC727FDC55400D11F84 /* View+Helpers.swift in Sources */,
 				DC2A8C342805022E002D86AA /* VideosViewController.swift in Sources */,

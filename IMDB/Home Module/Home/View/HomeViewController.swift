@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxDataSources
 
-class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
+class HomeViewController: BaseViewController, LoadingDisplayerProtocol, AlertDisplayerProtocol {
     @IBOutlet weak var tableView: UITableView!
     
     private var viewModel = HomeViewModel()
@@ -23,6 +23,7 @@ class HomeViewController: BaseViewController, LoadingDisplayerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindLoadingIndicator(to: viewModel.stateRelay)
+        bindAlert(to: viewModel.alertItemRelay)
         setupTableView()
         viewModel.fetchWhatToWatchMovies()
     }
